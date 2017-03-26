@@ -1,0 +1,37 @@
+{
+  "name": "@vscode/redux-core",
+  "version": "0.0.1",
+  "description": "git core for higher packages to depend on",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha ./dist/index.test.js"
+  },
+  "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.5",
+    "@types/redux-logger": "^2.10.0",
+    "@types/redux-persist": "^4.3.1",
+    "@types/semver": "^5.3.30",
+    "@types/sinon": "^1.16.34",
+    "mocha": "^3.2.0",
+    "ts-loader": "^2.0.3",
+    "webpack": "^2.1.0-beta.21",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "dependencies": {
+    "ramda": "^0.23.0",
+    "raven-js": "^3.0.3",
+    "redux": "veeramarni/redux",
+    "redux-logger": "^3.0.0",
+    "redux-observable": "^0.14.1",
+    "redux-persist": "^4.5.0",
+    "rxjs": "^5.2.0"
+  },
+  "typings": "dist/index.d.ts",
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  }
+}
