@@ -35,13 +35,13 @@ export const configureMiddleware = (
     const enableLogger = process.env.NODE_ENV !== 'production' && isClient;
 
     // Logger must be the last middleware in chain.
-    if (enableLogger) {
-        const logger = createLoggerMiddleware({
-            collapsed: true,
-        });
-        middleware.push(logger);
-    }
-    if (module.hot && typeof module.hot.accept === 'function') {
+    // if (enableLogger) {
+    //     const logger = createLoggerMiddleware({
+    //         collapsed: true,
+    //     });
+    //     middleware.push(logger);
+    // }
+    if (module && module.hot && typeof module.hot.accept === 'function') {
         if (isReactNative) {
             // TODO: Type error
             // module.hot.accept(() => {
