@@ -8,11 +8,13 @@ import {
     ReducersMapObject,
     GenericStoreEnhancer,
 } from 'redux';
+import '../typings/typings'
 import { configureReducer } from './configureReducer';
 import { configureMiddleware } from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
 import isReactNative from './app/isReactNative';
 import { module } from './module';
+
 
 export interface Options {
     initialState: any;
@@ -26,6 +28,9 @@ export interface Options {
 export interface IStore<T> extends Store<T> {
     asyncReducers: { [name: string]: Reducer<any> }
 }
+
+
+
 
 export const configureStore = (options: Options): Store<any> => {
     const {

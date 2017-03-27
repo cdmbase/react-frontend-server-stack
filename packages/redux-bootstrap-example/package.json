@@ -1,5 +1,5 @@
 {
-  "name": "redux-bootstrap-example",
+  "name": "@reduxstack/redux-bootstrap-example",
   "version": "1.0.0",
   "description": "redux-bootstrap example",
   "main": "index.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap-example#readme",
   "dependencies": {
-    "@vscode/redux-bootstrap": "^1.1.0",
+    "@reduxstack/redux-bootstrap": "^1.1.0",
     "express": "^4.14.0",
     "lodash": "^4.17.2",
     "node-sass": "^4.0.0",

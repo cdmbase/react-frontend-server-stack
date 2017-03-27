@@ -13,6 +13,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "typeRoots": [
+      "./typings",
       "node_modules/@types"
     ],
     "types": [
@@ -20,6 +21,9 @@
       "node"
     ]
   },
+  "files": [
+    "typings/typings.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",

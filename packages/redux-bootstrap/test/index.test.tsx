@@ -160,7 +160,7 @@ describe("redux-bootstrap", () => {
         before(() => {
             result = bootstrap({
                 container: "root",
-                createHistory: createHashHistory,
+                // createHistory: createHashHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),
@@ -258,7 +258,7 @@ describe("redux-bootstrap", () => {
         before(() => {
             result = bootstrap({
                 container: "root",
-                createHistory: createMemoryHistory,
+                // createHistory: createMemoryHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),
@@ -281,7 +281,7 @@ describe("redux-bootstrap", () => {
         before(() => {
             result = bootstrap({
                 container: "root",
-                createHistory: createMemoryHistory,
+                // createHistory: createMemoryHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),

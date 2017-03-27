@@ -1,5 +1,5 @@
 {
-  "name": "@vscode/redux-core",
+  "name": "@reduxstack/redux-core",
   "version": "0.0.1",
   "description": "git core for higher packages to depend on",
   "main": "dist/index.js",
@@ -20,6 +20,7 @@
     "@types/semver": "^5.3.30",
     "@types/sinon": "^1.16.34",
     "mocha": "^3.2.0",
+    "rimraf": "^2.6.1",
     "ts-loader": "^2.0.3",
     "webpack": "^2.1.0-beta.21",
     "webpack-node-externals": "^1.5.4"
@@ -27,7 +28,7 @@
   "dependencies": {
     "ramda": "^0.23.0",
     "raven-js": "^3.0.3",
-    "redux": "veeramarni/redux",
+    "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
     "redux-observable": "^0.14.1",
     "redux-persist": "^4.5.0",

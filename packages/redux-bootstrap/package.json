@@ -1,5 +1,5 @@
 {
-  "name": "@vscode/redux-bootstrap",
+  "name": "@reduxstack/redux-bootstrap",
   "version": "1.1.0",
   "description": "Bootstrapping for Redux applications",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap#readme",
   "dependencies": {
-    "@vscode/redux-core": "^0.0.1",
+    "@reduxstack/redux-core": "^0.0.1",
     "history": "^3.2.1",
     "lodash": "^4.17.4",
     "redux-logger": "^3.0.0",
