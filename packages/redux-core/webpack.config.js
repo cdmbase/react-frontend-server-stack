@@ -51,7 +51,7 @@ var webpack_opts = {
       loader: 'json'
     },]
   },
-  externals: [nodeExternals()]
+externals: [nodeExternals(), {module: module}]
 };
 
 module.exports = webpack_opts;

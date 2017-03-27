@@ -4,6 +4,9 @@
   "description": "git core for higher packages to depend on",
   "main": "dist/index.js",
   "scripts": {
+    "prebuild": "rimraf lib/* && rimraf dts/*",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
     "test": "mocha ./dist/index.test.js"
   },
   "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
