@@ -7,7 +7,6 @@ import {
     Middleware,
     ReducersMapObject,
     GenericStoreEnhancer,
-    StoreEnhancer,
 } from 'redux';
 import { configureReducer } from './configureReducer';
 import { configureMiddleware } from './configureMiddleware';
@@ -20,7 +19,7 @@ export interface Options {
     platformDeps?: Object;
     platformReducers?: ReducersMapObject;
     platformMiddleware?: Middleware[];
-    platformStoreEnhancers?: [StoreEnhancer<any>];
+    platformStoreEnhancers?: [GenericStoreEnhancer];
 
 }
 
@@ -53,10 +52,10 @@ export const configureStore = (options: Options): Store<any> => {
         ),
     );
 
-//   const store1:IStore<any> =    store.asyncReducers = {};
+    //   const store1:IStore<any> =    store.asyncReducers = {};
 
     // Enable hot reloading for reducers.
-    if ( module && module.hot && typeof module.hot.accept === 'function') {
+    if (module && module.hot && typeof module.hot.accept === 'function') {
         if (isReactNative) {
             // // React Native for some reason needs accept without the explicit path.
             // // facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html
