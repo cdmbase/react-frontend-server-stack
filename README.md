@@ -8,7 +8,7 @@ This is still in work-in-progress.
 ### To start
 - install lerna as global
 
-`npm install -g lerna`
+`npm install -g lerna` and/or `npm install`
 
 - run lerna bootstrap, which installs all the sub packages
 
