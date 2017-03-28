@@ -9,7 +9,7 @@ import getRoot from './containers/root';
 import interfaces from './interfaces/interfaces';
 import * as Redux from 'redux';
 import * as History from 'history';
-import { configureStore, Options as StoreOptions } from '@vscode/redux-core';
+import { configureStore, Options as StoreOptions } from '@reduxstack/redux-core';
 
 // const initialRouterReducerState = Immutable.fromJS({
 //     locationBeforeTransitions: null
