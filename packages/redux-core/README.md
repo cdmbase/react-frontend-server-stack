@@ -1,9 +1,8 @@
 
 
-## To run tests
+## To run 
 
-    `npm link`
-    `npm link @reduxstack/redux-core`
     `npm install`
+    `npm run build`
     `tsc`
     `npm run test`
