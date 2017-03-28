@@ -8,7 +8,7 @@ import {
     ReducersMapObject,
     GenericStoreEnhancer,
 } from 'redux';
-import '../typings/typings'
+
 import { configureReducer } from './configureReducer';
 import { configureMiddleware } from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
