@@ -1,12 +1,14 @@
 {
-  "name": "@reduxstack/redux-core",
-  "version": "0.0.1",
+  "name": "@redux-bootstrap/core",
+  "version": "1.1.0",
   "description": "git core for higher packages to depend on",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rimraf lib/* && rimraf dts/*",
-    "build": "webpack",
-    "build:watch": "webpack --watch",
+    "prepublish": "npm run build",
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf lib",
+    "build:lib": "webpack",
+    "build:lib:watch": "npm run build:lib -- --watch",
     "test": "mocha ./dist/index.test.js"
   },
   "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",

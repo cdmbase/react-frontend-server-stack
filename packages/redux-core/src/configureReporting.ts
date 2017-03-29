@@ -1,5 +1,7 @@
 import { Store } from './types';
-import Raven from 'raven-js';
+// import Raven from 'raven-js';
+// due to https://github.com/getsentry/raven-js/issues/898
+const Raven = require('raven-js');
 
 
 const captureException = error => {

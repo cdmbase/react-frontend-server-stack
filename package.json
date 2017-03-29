@@ -15,7 +15,9 @@
     "pretest": "npm run compile",
     "lerna": "lerna bootstrap --hoist",
     "install": "npm run lerna && npm run build",
+    "build": "npm run build:packages",
     "build:packages": "lerna run build --ignore @reduxstack/redux-bootstrap-example",
+    "build:packages:watch": "lerna run build:lib:watch --stream",
     "test": "jest",
     "posttest": "npm run lint",
     "coverage": "jest --coverage",
@@ -69,6 +71,7 @@
     "typescript": "2.2.1"
   },
   "dependencies": {
-    "export-dir": "^0.1.2"
+    "export-dir": "^0.1.2",
+    "redux": "^3.6.0"
   }
 }

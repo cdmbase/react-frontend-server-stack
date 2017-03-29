@@ -4,19 +4,20 @@ var path = require('path');
 var fs = require('fs');
 
 /* helper function to get into build directory */
-var distPath = function (name) {
+var libPath = function (name) {
   if (undefined === name) {
-    return path.join('dist');
+    return path.join('lib');
   }
 
-  return path.join('dist', name);
+  return path.join('lib', name);
 };
 
 var webpack_opts = {
   entry: './src/index.ts',
   target: 'node',
   output: {
-    filename: distPath('index.js'),
+    filename: libPath('index.js'),
+    library: '@redux-bootstrap/core',
     libraryTarget: "commonjs2"
   },
   resolve: {
