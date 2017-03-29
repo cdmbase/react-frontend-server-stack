@@ -1,7 +1,7 @@
 import {
     applyMiddleware,
     createStore,
-    compose,
+    //compose,
     Reducer,
     Store,
     Middleware,
@@ -14,7 +14,7 @@ import { configureMiddleware } from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
 import isReactNative from './app/isReactNative';
 import { module } from './module';
-
+import { compose } from '../lib/compose';
 
 export interface Options {
     initialState: any;
