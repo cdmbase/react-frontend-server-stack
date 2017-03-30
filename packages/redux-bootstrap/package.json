@@ -4,8 +4,13 @@
   "description": "Bootstrapping for Redux applications",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
-  "typings": "./dts/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "scripts": {
+        "prepublish": "npm run build",
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf lib",
+    "build:lib": "webpack",
+    "build:lib:watch": "npm run build:lib -- --watch",
     "test": "gulp"
   },
   "repository": {
