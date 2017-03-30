@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap#readme",
   "dependencies": {
-    "@redux-bootstrap/core": "^0.0.1",
+    "@redux-bootstrap/core": "^1.1.0",
     "history": "^3.2.1",
     "lodash": "^4.17.4",
     "redux-logger": "^3.0.0",

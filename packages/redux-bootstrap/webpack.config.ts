@@ -4,16 +4,22 @@ var fs = require('fs');
 var nodeExternals = require('webpack-node-externals');
 var Visualizer = require("webpack-visualizer-plugin");
 
+/* helper function to get into build directory */
+var libPath = function (name) {
+    if (undefined === name) {
+        return path.join('lib');
+    }
+
+    return path.join('lib', name);
+};
 
 var webpack_opts = {
     entry: './src/index.tsx',
     target: 'node',
     output: {
-        path: path.resolve(__dirname, 'lib'),
-        publicPath: '/lib/',
-        filename: 'index.js',
-        library: '@vscode/redux-bootstrap',
-        libraryTarget: 'umd',
+        filename: libPath('index.js'),
+        library: '@redux-bootstrap/bootstrap',
+        libraryTarget: 'commonjs2',
     },
     resolve: {
         extensions: ['d.ts', '.ts', '.tsx', '.js'],

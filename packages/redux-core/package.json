@@ -2,7 +2,7 @@
   "name": "@redux-bootstrap/core",
   "version": "1.1.0",
   "description": "git core for higher packages to depend on",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "npm run build:clean && npm run build:lib",
@@ -24,7 +24,8 @@
     "mocha": "^3.2.0",
     "rimraf": "^2.6.1",
     "ts-loader": "^2.0.3",
-    "webpack": "^2.1.0-beta.21",
+    "webpack": "^2.3.1",
+    "webpack-dev-middleware": "^1.10.1",
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
@@ -36,8 +37,8 @@
     "redux-persist": "^4.5.0",
     "rxjs": "^5.2.0"
   },
-  "typings": "dist/index.d.ts",
+  "typings": "lib/index.d.ts",
   "typescript": {
-    "definition": "dist/index.d.ts"
+    "definition": "lib/index.d.ts"
   }
 }
