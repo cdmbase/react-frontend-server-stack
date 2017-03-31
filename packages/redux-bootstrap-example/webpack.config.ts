@@ -8,7 +8,7 @@ var corePlugins = [
         "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
     }),
     new Visualizer({
-        filename: './statistics.html'
+        filename: './dist/statistics.html'
     })
 ];
 
