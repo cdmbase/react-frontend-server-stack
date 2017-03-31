@@ -1,6 +1,3 @@
-lib
-dist
-
 # Logs
 logs
 *.log
@@ -20,6 +17,8 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+.typingsrc
+
 # node-waf configuration
 .lock-wscript
 
@@ -28,14 +27,17 @@ build/Release
 
 # Dependency directory
 node_modules
-#typings
+typings
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
-.dist
 
-.idea
-Contact GitHub API Training Shop Blog About
+temp
+bundle
+dist
+coverage
+src/**/*.js
+src/*.js
