@@ -13,7 +13,7 @@ const usersReducer: Redux.Reducer<any> = (previousState: any = defaultUsersState
             return { ...previousState, loading: true };
         case ACTION_TYPES.ADD_USER_SUCCESS:
 
-            return { ...previousState, loading: false, userCount: previousState.userCount + 1 };
+            return { ...previousState, loading: false, usersCount: previousState.usersCount + 1 };
         default:
             return previousState;
     }

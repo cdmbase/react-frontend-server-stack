@@ -1,5 +1,5 @@
 import thunk from "redux-thunk";
-import { bootstrap } from "@redux-bootstrap/bootstrap";
+import { bootstrap } from '@redux-bootstrap/bootstrap';
 const createLogger = require("redux-logger");
 import { throttle } from "lodash";
 import routes from "./config/routes";
