@@ -15,7 +15,9 @@
     "pretest": "npm run compile",
     "lerna": "lerna bootstrap --hoist",
     "install": "npm run lerna && npm run build",
+    "build": "npm run build:packages",
     "build:packages": "lerna run build --ignore @reduxstack/redux-bootstrap-example",
+    "build:packages:watch": "lerna run build:lib:watch --stream",
     "test": "jest",
     "posttest": "npm run lint",
     "coverage": "jest --coverage",
@@ -42,11 +44,24 @@
     "url": "https://github.com/cdmbase/learna-bootstrap/issues"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.35",
     "@types/graphql": "^0.8.6",
     "@types/jest": "^19.2.2",
-    "@types/node": "^7.0.0",
-    "@types/sinon": "^1.16.34",
+    "@types/jquery": "^2.0.41",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/react": "^15.0.20",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-router": "^4.0.3",
+    "@types/redux-logger": "^3.0.0",
+    "@types/redux-persist": "^4.3.1",
+    "@types/sinon": "^1.16.36",
     "awesome-typescript-loader": "^3.0.0-beta.18",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-codemirror": "^0.3.0",
+    "react-dom": "^15.4.2",
+    "chai": "^3.5.0",
     "concurrently": "^3.1.0",
     "graphql": "^0.9.0",
     "istanbul": "1.0.0-alpha.2",
@@ -62,13 +77,21 @@
     "sinon-as-promised": "^4.0.0",
     "standard-version": "^4.0.0",
     "ts-jest": "^19.0.5",
-    "ts-node": "^3.0.2",
     "tslint": "^4.5.1",
     "tslint-loader": "^3.4.3",
     "tslint-react": "^2.5.0",
-    "typescript": "2.2.1"
+    "typescript": "2.2.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-middleware": "^1.10.1"
   },
   "dependencies": {
-    "export-dir": "^0.1.2"
+    "export-dir": "^0.1.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^3.0.3",
+    "redux": "^3.6.0",
+    "redux-observable": "^0.14.1",
+    "rxjs": "^5.2.0"
   }
 }

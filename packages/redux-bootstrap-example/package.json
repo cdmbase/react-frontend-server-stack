@@ -1,8 +1,8 @@
 {
-  "name": "@reduxstack/redux-bootstrap-example",
+  "name": "redux-bootstrap-example",
   "version": "1.0.0",
   "description": "redux-bootstrap example",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "scripts": {
     "test": "karma start",
     "coverage": "npm test && open coverage/index.html",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap-example#readme",
   "dependencies": {
-    "@reduxstack/redux-bootstrap": "^1.1.0",
+    "@redux-bootstrap/bootstrap": "*",
     "express": "^4.14.0",
     "lodash": "^4.17.2",
     "node-sass": "^4.0.0",

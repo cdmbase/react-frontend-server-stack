@@ -1,20 +1,35 @@
 {
+    "extends": "../../tsconfig",
     "compilerOptions": {
         "target": "es5",
-        "lib": ["es6", "dom"],
-        "types": ["mocha", "node"],
-        "module": "commonjs",
-        "moduleResolution": "node",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "types": [
+            "mocha",
+            "node"
+        ],
+        "rootDir": "./src",
         "jsx": "react",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "noImplicitAny": false,
-        "removeComments": true,
+        // "noImplicitAny": true,
+        "outDir": "./lib",
+        "declarationDir": "./lib",
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "noResolve": false,
-        "noUnusedParameters": false,
-        "noUnusedLocals": false,
-        "strictNullChecks": false
-    }
+        "suppressImplicitAnyIndexErrors": false,
+        // "noResolve": false,
+        // "noUnusedParameters": false,
+        // "noUnusedLocals": true,
+        "strictNullChecks": false,
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "lib",
+        "dist",
+        "webpack.config.ts",
+        "test"
+    ]
 }

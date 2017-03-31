@@ -31,9 +31,7 @@ module.exports = {
         inline: true
     },
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist",
-        publicPath: "/dist/"
+    filename: './dist/bundle.js',
     },
     devtool: "cheap-module-eval-source-map",
     resolve: {

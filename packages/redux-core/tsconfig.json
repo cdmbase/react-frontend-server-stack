@@ -1,9 +1,7 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "module": "amd",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "module": "commonjs",
     "jsx": "react",
     "lib": [
       "es2015",
@@ -11,18 +9,11 @@
     ],
     "declaration": true,
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./lib",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "types": [
-      "isomorphic-fetch",
-      "node"
     ]
   },
-  "files": [
-    "typings/typings.d.ts"
-  ],
   "exclude": [
     "node_modules",
     "dist",

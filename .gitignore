@@ -1,10 +1,13 @@
-lib
 dist
+lib
 
 # Logs
 logs
 *.log
 npm-debug.log*
+
+# Backup
+backup
 
 # Runtime data
 pids
@@ -28,7 +31,7 @@ build/Release
 
 # Dependency directory
 node_modules
-#typings
+typings
 
 # Optional npm cache directory
 .npm
@@ -36,6 +39,7 @@ node_modules
 # Optional REPL history
 .node_repl_history
 .dist
+.lib
 
 .idea
-Contact GitHub API Training Shop Blog About
+tmp

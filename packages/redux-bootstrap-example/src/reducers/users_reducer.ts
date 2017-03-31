@@ -10,13 +10,10 @@ const defaultUsersState = {
 const usersReducer: Redux.Reducer<any> = (previousState: any = defaultUsersState, action: any) => {
     switch (action.type) {
         case ACTION_TYPES.ADD_USER_BEGIN:
-            return { ...previousState, "loading": true };
+            return { ...previousState, loading: true };
         case ACTION_TYPES.ADD_USER_SUCCESS:
-            return {
-                ...previousState,
-                loading: false,
-                usersCount: previousState.usersCount + 1
-            };
+
+            return { ...previousState, loading: false, usersCount: previousState.usersCount + 1 };
         default:
             return previousState;
     }

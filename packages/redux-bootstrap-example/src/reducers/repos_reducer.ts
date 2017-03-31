@@ -10,7 +10,7 @@ const defaultReposState = {
 const reposReducer: Redux.Reducer<any> = (previousState: any = defaultReposState, action: any) => {
     switch (action.type) {
         case ACTION_TYPES.ADD_REPO_BEGIN:
-            return { ...previousState, "loading": true };
+            return { ...previousState, loading: true};
         case ACTION_TYPES.ADD_REPO_SUCCESS:
             return { ...previousState, loading: false, reposCount: previousState.reposCount + 1};
         default:

@@ -5,18 +5,27 @@
 
 This is still in work-in-progress.
 
-### To start
-- install lerna as global
+## Development
 
-`npm install -g lerna` and/or `npm install`
+If you want to develop gitstack locally you must follow the following instructions:
 
-- run lerna bootstrap, which installs all the sub packages
+* Fork or Clone this repository
 
-`lerna bootstrap`
+* Install the Redux Stack project in your computer
 
-- run build 
-
-`lerna run build` (** this might fail, you can run it individually in each packages**)
-
-
-
+```
+git clone https://github.com/cdmbase/react-frontend-server-stack.git
+cd graphql-server
+npm install
+npm run install
+```
+to run example
+```
+cd packages/redux-bootstrap-example
+npm start
+```
+```
+to run build with watch. Go to main directory and run
+```
+npm run build:packages:watch
+```
