@@ -1,6 +1,6 @@
 import thunk from "redux-thunk";
 import { bootstrap } from "@redux-bootstrap/bootstrap";
-// import { createLogger } from "redux-logger";
+const createLogger = require("redux-logger");
 import { throttle } from "lodash";
 import routes from "./config/routes";
 import reposReducer from "./reducers/repos_reducer";
@@ -13,7 +13,7 @@ declare var __PRELOADED_STATE__: any;
 let middleware: any[] = [thunk];
 
 if (process.env.NODE_ENV !== 'production') {
-    // middleware.push(createLogger({level: 'log'}));
+    middleware.push(createLogger({level: 'log'}));
 }
 
 let preloadedState: any = null;
