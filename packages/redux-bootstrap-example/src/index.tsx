@@ -38,7 +38,7 @@ let result = bootstrap({
 });
 
 result.store.subscribe(throttle(() => {
-    let state = result.store.getState().toJS();
+    let state = result.store.getState();
     // copy only application data not application state
     saveState({
         repos: state.repos,

@@ -6,7 +6,7 @@ import Counter from "../../components/counter_component";
 import * as Redux from "redux";
 
 function mapStateToPropsUserPage(state: any) {
-    return { users: state.get("users") };
+    return { users: state.users };
 }
 
 function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
@@ -17,8 +17,8 @@ function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
 class UsersPage extends React.Component<any, any> {
     public render() {
         let label = "Loading...";
-        if (this.props.users !== undefined && this.props.users.get("loading") === false) {
-            label = this.props.users.get("usersCount");
+        if (this.props.users !== undefined && this.props.users.loading === false) {
+            label = this.props.users.usersCount;
         }
         return (
             <div>

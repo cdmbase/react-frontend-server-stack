@@ -6,7 +6,7 @@ import Counter from "../../components/counter_component";
 import * as Redux from "redux";
 
 function mapStateToPropsReposPage(state: any) {
-    return { repos: state.get("repos") };
+    return { repos: state.repos };
 }
 
 function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch<any>) {
@@ -17,8 +17,8 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch<any>) {
 class ReposPage extends React.Component<any, any> {
     public render() {
         let label = "Loading...";
-        if (this.props.repos !== undefined && this.props.repos.get("loading") === false) {
-            label = this.props.repos.get("reposCount");
+        if (this.props.repos !== undefined && this.props.repos.loading === false) {
+            label = this.props.repos.reposCount;
         }
         return (
             <div>
