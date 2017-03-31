@@ -1,6 +1,6 @@
 
 import thunk from "redux-thunk";
-import { bootstrap } from "@vscode/redux-bootstrap";
+import { bootstrap } from "@redux-bootstrap/bootstrap";
 // import createLogger from "redux-logger";
 // const createLogger = require('redux-logger');
 import { throttle } from "lodash";

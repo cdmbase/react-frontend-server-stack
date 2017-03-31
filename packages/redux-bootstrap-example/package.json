@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap-example#readme",
   "dependencies": {
-    "@vscode/redux-bootstrap": "^1.1.0",
+    "@redux-bootstrap/bootstrap": "*",
     "express": "^4.14.0",
     "lodash": "^4.17.2",
     "node-sass": "^4.0.0",

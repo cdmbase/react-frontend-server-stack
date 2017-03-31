@@ -1,7 +1,7 @@
 import * as express from "express";
 import { createMemoryHistory } from "history";
 import { renderToStaticMarkup } from "react-dom/server";
-import { bootstrap } from "@vscode/redux-bootstrap";
+import { bootstrap } from "@redux-bootstrap/bootstrap";
 import routes from "./src/config/routes";
 import reposReducer from "./src/reducers/repos_reducer";
 import usersReducer from "./src/reducers/users_reducer";
