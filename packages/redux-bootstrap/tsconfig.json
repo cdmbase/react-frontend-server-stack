@@ -3,7 +3,7 @@
         "target": "es5",
         "lib": ["es6", "dom"],
         "types": ["mocha", "node"],
-        "module": "commonjs",
+        "module": "umd",
         "moduleResolution": "node",
         "jsx": "react",
         "experimentalDecorators": true,

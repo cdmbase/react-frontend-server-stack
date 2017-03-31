@@ -19,7 +19,7 @@ var webpack_opts = {
     output: {
         filename: libPath('index.js'),
         library: '@redux-bootstrap/bootstrap',
-        libraryTarget: 'commonjs2',
+        libraryTarget: 'umd',
     },
     resolve: {
         extensions: ['d.ts', '.ts', '.tsx', '.js'],
@@ -59,6 +59,7 @@ var webpack_opts = {
     // dependencies, which allows browsers to cache those libraries between builds.
     externals: [nodeExternals(), {
         'react': 'umd react',
+        'react-dom': 'umd react-dom',
     }]
 };
 module.exports = webpack_opts;
