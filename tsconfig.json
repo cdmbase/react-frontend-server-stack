@@ -18,5 +18,11 @@
     "types": [
       "@types/node"
     ]
-  }
+  },
+    "exclude": [
+        "node_modules",
+        "lib",
+        "dist",
+        "webpack.config.js"
+    ]
 }

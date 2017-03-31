@@ -1,8 +1,6 @@
-
 import thunk from "redux-thunk";
 import { bootstrap } from "@redux-bootstrap/bootstrap";
-// import createLogger from "redux-logger";
-// const createLogger = require('redux-logger');
+// import { createLogger } from "redux-logger";
 import { throttle } from "lodash";
 import routes from "./config/routes";
 import reposReducer from "./reducers/repos_reducer";
@@ -14,13 +12,13 @@ declare var __PRELOADED_STATE__: any;
 
 let middleware: any[] = [thunk];
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
     // middleware.push(createLogger({level: 'log'}));
 }
 
 let preloadedState: any = null;
 
-if (typeof __PRELOADED_STATE__ === "undefined") {
+if (typeof __PRELOADED_STATE__ === 'undefined') {
     // use state from server side
     preloadedState = loadState();
 } else {
@@ -40,7 +38,7 @@ let result = bootstrap({
 });
 
 result.store.subscribe(throttle(() => {
-    let state = result.store.getState();
+    let state = result.store.getState().toJS();
     // copy only application data not application state
     saveState({
         repos: state.repos,

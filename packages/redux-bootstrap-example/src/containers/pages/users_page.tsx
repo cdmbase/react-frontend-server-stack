@@ -6,12 +6,10 @@ import Counter from "../../components/counter_component";
 import * as Redux from "redux";
 
 function mapStateToPropsUserPage(state: any) {
-    return { users: state["users"] };
+    return { users: state.get("users") };
 }
 
 function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
-    console.log("dispatch...");
-    console.log(dispatch);
     return { actions : bindActionCreators(userActions, dispatch) };
 }
 
@@ -19,8 +17,8 @@ function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
 class UsersPage extends React.Component<any, any> {
     public render() {
         let label = "Loading...";
-        if (this.props.users !== undefined && this.props.users["loading"] === false) {
-            label = this.props.users["usersCount"];
+        if (this.props.users !== undefined && this.props.users.get("loading") === false) {
+            label = this.props.users.get("usersCount");
         }
         return (
             <div>
