@@ -34,13 +34,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        "test/index.test.ts" :  ["webpack", "sourcemap"]
+        "tests/index.test.ts" :  ["webpack", "sourcemap"]
     },
 
     // list of files / patterns to load in the browser
     files : [
         { pattern: "node_modules/html5-history-api/history.js", included: true },
-        { pattern: "test/index.test.ts", included: true }
+        { pattern: "tests/*.test.ts", included: true },
+        { pattern: "tests/actions/*.test.ts", included: true },
+        { pattern: "tests/reducers/*.test.ts", included: true }
     ],
 
     // web server port

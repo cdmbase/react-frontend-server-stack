@@ -1,6 +1,7 @@
 import reposReducer from "../../src/reducers/repos_reducer";
 import ACTION_TYPES from "../../src/constants/action_types";
 import { expect } from "chai";
+import * as mocha from "mocha";
 
 describe("Repo Reducer", () => {
 

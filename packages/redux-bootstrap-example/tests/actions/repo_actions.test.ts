@@ -2,6 +2,7 @@ import repoActions from "../../src/actions/repo_actions";
 import ACTION_TYPES from "../../src/constants/action_types";
 import * as sinon from "sinon";
 import { expect } from "chai";
+import * as mocha from "mocha";
 
 describe("Repo Actions", () => {
 
@@ -23,7 +24,7 @@ describe("Repo Actions", () => {
 
         let dispatchableAddRepoAsync = repoActions.addRepoAsync();
 
-        dispatchableAddRepoAsync(dispatchMockSpy);
+        dispatchableAddRepoAsync({ dispatch: dispatchMockSpy });
 
         setTimeout(() => {
             expect(dispatchMockSpy.getCall(0).args[0].type).eql(ACTION_TYPES.ADD_REPO_BEGIN);
