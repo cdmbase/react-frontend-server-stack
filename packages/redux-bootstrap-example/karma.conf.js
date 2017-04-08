@@ -3,26 +3,10 @@ const webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
   config.set({
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
-    
-    // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "",
-    
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ["mocha"],
-    
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [
-        "PhantomJS"
-    ],
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    browsers: ["PhantomJS"],
     reporters: ["mocha", "karma-remap-istanbul"],
     remapIstanbulReporter: {
       reports: {
@@ -30,44 +14,22 @@ module.exports = function(config) {
         "text-summary": null
       }
     },
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         "tests/index.test.ts" :  ["webpack", "sourcemap"]
     },
-
-    // list of files / patterns to load in the browser
     files : [
         { pattern: "node_modules/html5-history-api/history.js", included: true },
-        { pattern: "tests/*.test.ts", included: true },
-        { pattern: "tests/actions/*.test.ts", included: true },
-        { pattern: "tests/reducers/*.test.ts", included: true }
+        { pattern: "tests/index.test.ts", included: true }
     ],
-
-    // web server port
     port: 9876,
-
-    // enable / disable colors in the output (reporters and logs)
     colors: true,
-    
-    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-    
+    logLevel: config.LOG_DEBUG,
     phantomjsLauncher: {
       exitOnResourceError: true
     },
     webpack: webpackConfig,
-
-    // list of files to exclude
     exclude: [],
-
-    // Concurrency level
-    // how many browser should be started simultaneous
     concurrency: Infinity
   });
 };
