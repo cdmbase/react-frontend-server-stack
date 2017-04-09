@@ -1,13 +1,14 @@
 import repoActions from "../../src/actions/repo_actions";
 import ACTION_TYPES from "../../src/constants/action_types";
+import * as Redux from "redux";
 import * as sinon from "sinon";
 import { expect } from "chai";
 import * as mocha from "mocha";
+import consoleLog from "../consoleLog";
 
 describe("Repo Actions", () => {
 
     let sandbox: sinon.SinonSandbox;
-
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
     });
@@ -17,21 +18,19 @@ describe("Repo Actions", () => {
     });
 
     it("Should be possible to add a repo", (done) => {
+        const dispatchMock: Redux.Dispatch<any> = (action: any) => {
+            /* DO NOTHING */
+        };
+        const dispatchMockSpy = sinon.spy(dispatchMock);
+        const dispatchableAddRepoAsync = repoActions.addRepoAsync();
 
-        let dispatchMock = (action: any) => { /* DO NOTHING */ };
-
-        let dispatchMockSpy = sinon.spy(dispatchMock);
-
-        let dispatchableAddRepoAsync = repoActions.addRepoAsync();
-
-        dispatchableAddRepoAsync({ dispatch: dispatchMockSpy });
+        dispatchableAddRepoAsync( dispatchMockSpy );
 
         setTimeout(() => {
             expect(dispatchMockSpy.getCall(0).args[0].type).eql(ACTION_TYPES.ADD_REPO_BEGIN);
             expect(dispatchMockSpy.getCall(1).args[0].type).eql(ACTION_TYPES.ADD_REPO_SUCCESS);
             done();
         }, 100);
-
     });
 
 });
