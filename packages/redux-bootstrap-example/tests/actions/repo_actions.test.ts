@@ -24,7 +24,7 @@ describe("Repo Actions", () => {
         const dispatchMockSpy = sinon.spy(dispatchMock);
         const dispatchableAddRepoAsync = repoActions.addRepoAsync();
 
-        dispatchableAddRepoAsync({ dispatch: dispatchMockSpy });
+        dispatchableAddRepoAsync({ dispatch: dispatchMockSpy })(dispatchMockSpy as any);
 
         setTimeout(() => {
             expect(dispatchMockSpy.getCall(0).args[0].type).eql(ACTION_TYPES.ADD_REPO_BEGIN);
