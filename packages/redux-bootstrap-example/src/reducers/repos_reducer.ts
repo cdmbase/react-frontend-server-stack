@@ -4,7 +4,7 @@ import * as Redux from "redux";
 
 const defaultReposState = {
     loading: false,
-    reposCount: 0
+    reposCount: 0,
 };
 
 const reposReducer: Redux.Reducer<any> = (previousState: any = defaultReposState, action: any) => {

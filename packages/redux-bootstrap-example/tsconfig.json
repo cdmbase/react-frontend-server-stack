@@ -5,7 +5,8 @@
             "es6",
             "dom"
         ],
-        "rootDir": "./src",
+        //"rootDir": "./src",
+        "rootDirs": ["./src", "./tests"],
         "jsx": "react",
         // "noImplicitAny": true,
         "outDir": "./dist",
@@ -15,7 +16,7 @@
         // "noUnusedParameters": false,
         // "noUnusedLocals": true,
         // "strictNullChecks": false,
-    "typeRoots": [
+        "typeRoots": [
             "node_modules/@types"
         ]
     },
