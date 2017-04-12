@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withUser } from '@accounts/react';
 
 class HomePage extends React.Component<any, void> {
     public render() {
@@ -8,4 +9,5 @@ class HomePage extends React.Component<any, void> {
     }
 }
 
-export default HomePage;
+// export default HomePage;
+export default withUser(({ user }) => <HomePage />);

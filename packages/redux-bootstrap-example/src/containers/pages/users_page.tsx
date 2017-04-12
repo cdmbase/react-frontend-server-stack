@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import userActions from "../../actions/user_actions";
 import Counter from "../../components/counter_component";
 import * as Redux from "redux";
+import { withUser } from '@accounts/react';
 
 function mapStateToPropsUserPage(state: any) {
     return { users: state.users };
@@ -26,9 +27,9 @@ class UsersPage extends React.Component<any, any> {
                 <Counter count={label}
                          addBtnTextLabel={"Add User"}
                          incrementAsync={() => { this.props.actions.addUserAsync(); } } />
-            </div>
-        );
+            </div>);
     }
 }
 
-export default UsersPage;
+// export default UsersPage;
+export default withUser(({ user }) => <UsersPage />);

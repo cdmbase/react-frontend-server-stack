@@ -1,5 +1,11 @@
 import * as React from "react";
 import { Link } from "react-router";
+import AccountsClient from '@accounts/client';
+// import { accountRoutes, Authenticated } from '@accounts/react';
+
+const logout = () => {
+  AccountsClient.logout();
+};
 
 class AppLayout extends React.Component<any, any> {
     public render() {
@@ -9,6 +15,7 @@ class AppLayout extends React.Component<any, any> {
                     <Link id="link_to_home" className="link_to" to="/">Home</Link>
                     <Link id="link_to_users" className="link_to" to="/users">Users</Link>
                     <Link id="link_to_repos" className="link_to" to="/repos">Repos</Link>
+                    <button onClick={logout}> Logout </button>
                 </div>
                 {this.props.children}
                 <div className="break"/>

@@ -25,6 +25,7 @@ var plugins = process.env.NODE_ENV === "production" ? corePlugins.concat(prodPlu
 
 module.exports = {
     entry: [
+        "babel-polyfill",
         "./src/index.tsx"
     ],
     devServer: {
@@ -38,6 +39,11 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js', '.css']
     },
     module: {
+        loaders: [{
+            test: /\.tsx$/,
+            loader: 'babel',
+            exclude: /node_modules/,
+        }],
         rules: [
 
             /**

@@ -1,3 +1,10 @@
+import 'babel-polyfill';
+import 'isomorphic-fetch';
+
+import * as injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+import '@accounts/react-material-ui';
+
 import thunk from "redux-thunk";
 import { bootstrap } from '@redux-bootstrap/bootstrap';
 const createLogger = require("redux-logger");

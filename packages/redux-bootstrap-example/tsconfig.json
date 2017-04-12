@@ -12,6 +12,7 @@
         "outDir": "./dist",
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": false,
+        "sourceMap": true,
         // "noResolve": false,
         // "noUnusedParameters": false,
         // "noUnusedLocals": true,

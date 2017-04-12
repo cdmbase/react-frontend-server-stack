@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import repoActions from "../../actions/repo_actions";
 import Counter from "../../components/counter_component";
 import * as Redux from "redux";
+import { withUser } from '@accounts/react';
 
 function mapStateToPropsReposPage(state: any) {
     return { repos: state.repos };
@@ -26,9 +27,9 @@ class ReposPage extends React.Component<any, any> {
                 <Counter count={label}
                          addBtnTextLabel={"Add Repo"}
                          incrementAsync={() => { this.props.actions.addRepoAsync(); } } />
-            </div>
-        );
+            </div>);
     }
 }
 
-export default ReposPage;
+// export default ReposPage;
+export default withUser(({ user }) => <ReposPage />);
