@@ -1,7 +1,7 @@
 {
-  "name": "redux-bootstrap-example",
+  "name": "redux-apollo-bootstrap-example",
   "version": "0.0.1",
-  "description": "redux-bootstrap example",
+  "description": "redux-apollo-bootstrap example",
   "main": "src/index.tsx",
   "scripts": {
     "test": "karma start",
@@ -34,7 +34,7 @@
     "@accounts/rest-client": "0.0.3",
     "@accounts/rest-express": "0.0.3",
     "@accounts/server": "0.0.4",
-    "@redux-bootstrap/bootstrap": "^0.0.1",
+    "@redux-bootstrap/apollo-bootstrap": "^0.0.1",
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.2",

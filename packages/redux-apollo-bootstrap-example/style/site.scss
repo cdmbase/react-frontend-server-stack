@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+.container {
+    width: 90%;
+    margin: auto;
+    color: #333;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container .label {
+    background-color: #eeeeee;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.container h1 {
+    font-size: 45px;
+    margin-top: 0px;
+}
+
+.break {
+    clear: both;
+}
+
+.navbar {
+    border: 1px solid #e7e7e7;
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.navbar a {
+    color: #777;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.count {
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    color: #333333;
+    border: 1px solid #e3e3e3;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.count span {
+    padding-top: 41%;
+    display: block;
+    font-size: 25px;
+}
+
+.container button {
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-color: #337ab7;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ffffff;
+    border: 1px solid #337ab7;
+    font-size: 25px;
+}
+
+.container button:hover {
+    background-color: #2e6da4;
+}
