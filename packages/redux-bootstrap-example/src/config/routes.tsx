@@ -6,19 +6,19 @@ import UsersPage from "../containers/pages/users_page";
 import ReposPage from "../containers/pages/repos_page";
 import NotFoundPage from "../containers/pages/not_found_page";
 
-import AccountsClient from '@accounts/client';
-import { accountRoutes, Authenticated } from '@accounts/react';
+import AccountsClient from "@accounts/client";
+import { accountRoutes, Authenticated } from "@accounts/react";
 // import createLogger from 'redux-logger';
-import restClient from '@accounts/rest-client';
+import restClient from "@accounts/rest-client";
 
 (async () => {
   AccountsClient.config({
-    server: 'http://localhost:3010',
+    server: "http://localhost:3010",
     history: browserHistory,
-    title: 'rest-example',
-    loginPath: '/login',
-    signUpPath: '/signup',
-    homePath: '/home',
+    title: "rest-example",
+    loginPath: "/login",
+    signUpPath: "/signup",
+    homePath: "/home",
     // reduxLogger: createLogger(),
   }, restClient);
 
