@@ -1,5 +1,5 @@
 import { render as renderToDOM } from "react-dom";
-import { useRouterHistory } from "react-router";
+// import { useRouterHistory } from "react-router";
 import createBrowserHistory from "history/lib/createBrowserHistory";
 // import { LOCATION_CHANGE, syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 // import { combineReducers } from "redux-immutable";
@@ -9,7 +9,7 @@ import getRoot from "./containers/root";
 import interfaces from "./interfaces/interfaces";
 import * as Redux from "redux";
 import * as History from "history";
-import { configureStore, Options as StoreOptions } from "@redux-apollo-bootstrap/core";
+import { configureStore, Options as StoreOptions } from "@redux-bootstrap/core";
 import { ApolloClient } from "react-apollo";
 
 // const initialRouterReducerState = Immutable.fromJS({
@@ -39,7 +39,12 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     if (options.routes === undefined) { throw new TypeError("Invalid configuration field: routes."); };
     if (options.reducers === undefined) { throw new TypeError("Invalid configuration field: reducers."); };
 
-    const client: ApolloClient = new ApolloClient();
+    const networkInterface = createNetworkInterface({ 
+        uri: 'http://localhost:4000/graphql',
+    });
+    const client: ApolloClient = new ApolloClient({
+        networkInterface,
+    });
 
     // mandatory
     let routes = options.routes;

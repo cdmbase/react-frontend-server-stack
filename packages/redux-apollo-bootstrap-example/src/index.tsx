@@ -1,13 +1,13 @@
-import 'babel-polyfill';
-import 'isomorphic-fetch';
+import "babel-polyfill";
+import "isomorphic-fetch";
 
-import * as injectTapEventPlugin from 'react-tap-event-plugin';
+import * as injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
-import '@accounts/react-material-ui';
+import "@accounts/react-material-ui";
 
 import thunk from "redux-thunk";
-import { bootstrap } from '@redux-bootstrap/bootstrap';
-const createLogger = require("redux-logger");
+import { bootstrap } from "@redux-bootstrap/apollo-bootstrap";
+const { createLogger } = require("redux-logger");
 const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 import { throttle } from "lodash";
 import routes from "./config/routes";
@@ -20,14 +20,14 @@ declare var __PRELOADED_STATE__: any;
 
 let middleware: any[] = [thunk];
 
-if (process.env.NODE_ENV !== 'production') {
-    middleware.push(createLogger({level: 'log'}));
+if (process.env.NODE_ENV !== "production") {
+    middleware.push(createLogger({level: "log"}));
     middleware.push(immutableStateInvariant());
 }
 
 let preloadedState: any = null;
 
-if (typeof __PRELOADED_STATE__ === 'undefined') {
+if (typeof __PRELOADED_STATE__ === "undefined") {
     // use state from server side
     preloadedState = loadState();
 } else {

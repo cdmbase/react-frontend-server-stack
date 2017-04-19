@@ -2,7 +2,7 @@ import * as React from "react";
 import { Router, browserHistory } from "react-router";
 import * as Redux from "redux";
 // import * as History from 'history';
-//import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import { ApolloClient, ApolloProvider } from "react-apollo";
 
 import interfaces from "../interfaces/interfaces";
