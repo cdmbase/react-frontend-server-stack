@@ -9,7 +9,7 @@ import { gql, graphql } from "react-apollo";
 
 const usersPageQuery = gql`
    query usersPageQuery {
-       userPage {
+       users {
           usersCount
        }
    }
@@ -36,7 +36,7 @@ class UsersPage extends React.Component<any, any> {
         console.log("this.props.data=");
         console.log(this.props.data);
 
-        const {loading, error, userPage } = this.props.data;
+        const {loading, error, users } = this.props.data;
 
         console.log("loading=")
         console.log(loading)
@@ -44,15 +44,15 @@ class UsersPage extends React.Component<any, any> {
         console.log("error=")
         console.log(error)
 
-        console.log("userPage=")
-        console.log(userPage)
+        console.log("users=")
+        console.log(users)
 
         if (loading) {
             label = "Loading ...!!!";
         } else if (error) {
             label = this.props.error.message;
         } else {
-            label = userPage.usersCount;
+            label = users.usersCount;
         }
 
         return (

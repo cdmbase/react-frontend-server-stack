@@ -10,7 +10,7 @@ import interfaces from "./interfaces/interfaces";
 import * as Redux from "redux";
 import * as History from "history";
 import { configureStore, Options as StoreOptions } from "@redux-bootstrap/core";
-import { ApolloClient } from "react-apollo";
+import { ApolloClient, createNetworkInterface } from "react-apollo";
 
 // const initialRouterReducerState = Immutable.fromJS({
 //     locationBeforeTransitions: null
@@ -39,7 +39,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     if (options.routes === undefined) { throw new TypeError("Invalid configuration field: routes."); };
     if (options.reducers === undefined) { throw new TypeError("Invalid configuration field: reducers."); };
 
-    const networkInterface = createNetworkInterface({ 
+    const networkInterface = createNetworkInterface({
         uri: 'http://localhost:4000/graphql',
     });
     const client: ApolloClient = new ApolloClient({
@@ -50,6 +50,9 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     let routes = options.routes;
     let reducers: any = options.reducers;
     reducers.apollo = client.reducer();
+
+    console.log("******reducers******");
+    console.log(reducers);
 
     // optional
     let container = options.container || "root";

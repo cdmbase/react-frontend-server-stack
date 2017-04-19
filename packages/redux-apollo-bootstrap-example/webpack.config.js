@@ -1,4 +1,6 @@
-const { CheckerPlugin } = require("awesome-typescript-loader")
+const {
+    CheckerPlugin
+} = require("awesome-typescript-loader")
 var Visualizer = require("webpack-visualizer-plugin");
 const webpack = require("webpack");
 
@@ -32,7 +34,7 @@ module.exports = {
         inline: true
     },
     output: {
-    filename: './dist/bundle.js',
+        filename: './dist/bundle.js',
     },
     devtool: "cheap-module-eval-source-map",
     resolve: {
@@ -78,13 +80,18 @@ module.exports = {
                 loader: ['raw-loader', 'sass-loader'],
             },
             /**
-            * Raw loader support for *.css files
-            *
-            * See: https://github.com/webpack/raw-loader
-            */
+             * Raw loader support for *.css files
+             *
+             * See: https://github.com/webpack/raw-loader
+             */
             {
                 test: /\.css$/,
                 loader: ['file-loader', 'url-loader', 'css-loader'],
+            },
+            {
+                test: /\.(graphql|gql)$/,
+                exclude: /node_modules/,
+                loader: 'graphql-tag/loader',
             },
         ],
     },
