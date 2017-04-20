@@ -6,7 +6,10 @@ import Counter from "../../components/counter_component";
 import * as Redux from "redux";
 import { withUser } from '@accounts/react';
 import { graphql } from "react-apollo";
-import reposPageQuery from "../../apolloQueries/repos";
+import reposPageQuery from "../../apolloQueries/reposQueries";
+import addRepoMutation from "../../apolloMutations/reposMutations";
+
+const CounterMutation = graphql(addRepoMutation)(Counter);
 
 function mapStateToPropsReposPage(state: any) {
     return { repos: state.repos };
@@ -33,7 +36,8 @@ class ReposPage extends React.Component<any, any> {
         return (
             <div>
                 <h1>Repos Page!</h1>
-                <Counter count={label}
+                <CounterMutation count={label}
+                         apolloQuery={reposPageQuery}
                          addBtnTextLabel={"Add Repo"}
                          incrementAsync={() => { this.props.actions.addRepoAsync(); } } />
             </div>);

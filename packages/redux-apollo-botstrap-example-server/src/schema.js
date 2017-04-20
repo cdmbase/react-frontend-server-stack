@@ -6,7 +6,7 @@ var {
 var { resolvers } = require('./resolvers');
 
 const typeDefs = `
-type User {
+type Users {
   usersCount: ID!
 }
 
@@ -15,8 +15,13 @@ type Repos {
 }
 
 type Query {
-  users: User    # "[]" means this is a list of channels
+  users: Users    # "[]" means this is a list of channels
   repos: Repos
+}
+
+type Mutation {
+  addUser(name: String): Users
+  addRepo(name: String): Repos
 }
 `;
 

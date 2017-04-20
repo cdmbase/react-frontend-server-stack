@@ -10,9 +10,23 @@ var repos = {
 
 var resolvers = {
   Query: {
-    users: () => { return users; },
-    repos: () => { return repos; },
-  }
+    users: () => { 
+      return users; 
+    },
+    repos: () => { 
+      return repos; 
+    },
+  },
+  Mutation: {
+    addUser: (root, args) => {
+      users.usersCount++;
+      return users;
+    },
+    addRepo: (root, args) => {
+      repos.reposCount++;
+      return repos;
+    },
+  },
 };
 
 module.exports = { resolvers };
