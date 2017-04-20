@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "coverage": "npm test && open coverage/index.html",
-    "start": "webpack-dev-server --hot --history-api-fallback",
+    "start": "NODE_ENV=development webpack-dev-server --hot --history-api-fallback",
     "stats": "NODE_ENV=production webpack && open dist/statistics.html",
     "release": "NODE_ENV=production webpack && tsc -p tsconfig.json --outDir dist/ && npm run package",
     "package": "rm -r -f ./dist/release && mkdir ./dist/release && mkdir ./dist/release/dist && mkdir ./dist/release/src && cp ./package.json ./dist/release/ && cp ./index.html ./dist/release/ && cp ./dist/server.js ./dist/release/ && cp ./dist/bundle.js ./dist/release/dist/ && cp ./style/site.scss dist/release/ && cp -r ./dist/src/* ./dist/release/src"
