@@ -1,4 +1,4 @@
-// import * as History from 'history';
+import * as History from 'history';
 import * as Redux from 'redux';
 
 namespace interfaces {
@@ -18,8 +18,8 @@ namespace interfaces {
     export interface BoostrapOptions {
         routes: JSX.Element;
         reducers: ReducersOption;
-        // createHistory?: History.CreateHistory<History.HistoryOptions, History.History>;
-        // historyOptions?: History.HistoryOptions;
+        createHistory?: History.CreateHistory<History.HistoryOptions, History.History>;
+        historyOptions?: History.HistoryOptions;
         middlewares?: Redux.Middleware[];
         render?: Function;
         initialState?: any;
@@ -30,7 +30,7 @@ namespace interfaces {
 
     export interface BootstrapResult {
         store: Redux.Store<any>;
-        // history: History.History;
+        history: History.History;
         output: any;
         root: JSX.Element;
     }

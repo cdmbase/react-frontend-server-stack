@@ -1,17 +1,11 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "module": "commonjs",
     "jsx": "react",
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-    "declaration": true,
     "rootDir": "./src",
     "outDir": "./lib",
     "typeRoots": [
-      "node_modules/@types"
+      "../../node_modules/@types"
     ]
   },
   "exclude": [

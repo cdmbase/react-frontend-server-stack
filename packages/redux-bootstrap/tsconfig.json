@@ -1,34 +1,18 @@
 {
     "extends": "../../tsconfig",
     "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "types": [
-            "mocha",
-            "node"
-        ],
         "rootDir": "./src",
-        "jsx": "react",
-        // "noImplicitAny": true,
         "outDir": "./lib",
-        "declarationDir": "./lib",
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": false,
-        // "noResolve": false,
-        // "noUnusedParameters": false,
-        // "noUnusedLocals": true,
-        "strictNullChecks": false,
+        "jsx": "react",
         "typeRoots": [
-            "node_modules/@types"
+            "../../node_modules/@types"
         ]
     },
     "exclude": [
         "node_modules",
         "lib",
         "dist",
+        "webpack.config.js",
         "webpack.config.ts",
         "test"
     ]
