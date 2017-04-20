@@ -1,5 +1,12 @@
+import "babel-polyfill";
+import "isomorphic-fetch";
+
+import * as injectTapEventPlugin from "react-tap-event-plugin";
+injectTapEventPlugin();
+import "@accounts/react-material-ui";
+
 import thunk from "redux-thunk";
-import { bootstrap } from '@redux-bootstrap/bootstrap';
+import { bootstrap } from "@redux-bootstrap/bootstrap";
 const createLogger = require("redux-logger");
 const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 import { throttle } from "lodash";
@@ -13,8 +20,8 @@ declare var __PRELOADED_STATE__: any;
 
 let middleware: any[] = [thunk];
 
-if (process.env.NODE_ENV !== 'production') {
-    middleware.push(createLogger({level: 'log'}));
+if (process.env.NODE_ENV !== "production") {
+    middleware.push(createLogger({level: "log"}));
     middleware.push(immutableStateInvariant());
 }
 
