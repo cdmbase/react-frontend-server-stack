@@ -5,26 +5,24 @@
             "es6",
             "dom"
         ],
-        //"rootDir": "./src",
-        "rootDirs": ["./src", "./tests"],
+        "rootDirs": [
+            "./src",
+            "./tests"
+        ],
         "jsx": "react",
-        // "noImplicitAny": true,
         "outDir": "./dist",
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": false,
         "sourceMap": true,
-        // "noResolve": false,
-        // "noUnusedParameters": false,
-        // "noUnusedLocals": true,
-        // "strictNullChecks": false,
         "typeRoots": [
-            "node_modules/@types"
+            "../../node_modules/@types"
         ]
     },
     "exclude": [
         "node_modules",
         "lib",
         "dist",
+        "webpack.config.js",
         "webpack.config.ts"
     ]
 }

@@ -7,7 +7,7 @@ import "@accounts/react-material-ui";
 
 import thunk from "redux-thunk";
 import { bootstrap } from "@redux-bootstrap/bootstrap";
-const createLogger = require("redux-logger");
+import { createLogger } from "redux-logger";
 const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 import { throttle } from "lodash";
 import routes from "./config/routes";
