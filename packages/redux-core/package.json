@@ -8,20 +8,17 @@
     "build": "npm run build:clean && npm run build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "webpack",
-    "build:lib:watch": "npm run build:lib -- --watch",
-    "test": "mocha ./dist/index.test.js"
+    "build:lib:watch": "npm run build:lib -- --watch"
   },
   "author": "CDMbase LLC (https://github.com/cdmbase)",
   "license": "MIT",
   "devDependencies": {
     "@types/minimist": "^1.2.0",
-    "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
     "@types/redux-logger": "^3.0.0",
     "@types/redux-persist": "^4.3.1",
     "@types/semver": "^5.3.30",
     "@types/sinon": "^1.16.36",
-    "mocha": "^3.2.0",
     "rimraf": "^2.6.1",
     "ts-loader": "^2.0.3",
     "webpack": "^2.3.3",

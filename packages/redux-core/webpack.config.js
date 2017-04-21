@@ -36,15 +36,12 @@ var webpack_opts = {
   ],
   devtool: 'source-map',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.ts$/,
       loaders: 'ts-loader'
-    }, {
-      test: /\.json?$/,
-      loader: 'json'
-    },]
+    }]
   },
-externals: [nodeExternals({ modulesDir: "../../node_modules" }), {module: module}]
+  externals: [nodeExternals({ modulesDir: "../../node_modules" }), { module: module }]
 };
 
 module.exports = webpack_opts;

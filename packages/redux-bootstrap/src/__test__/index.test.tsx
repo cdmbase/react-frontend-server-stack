@@ -4,11 +4,11 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import thunk from 'redux-thunk';
 import { push } from 'react-router-redux';
 import * as $ from 'jquery';
-import { expect } from 'chai';
-import { bootstrap, interfaces } from '../src/index'
+import 'jest';
+import { bootstrap, interfaces } from '../index'
 import { ACTION_TYPES, getRoutes, getReducers } from './stubs';
 import * as Redux from 'redux';
-// import * as ReactRouterRedux from "react-router-redux";
+import * as ReactRouterRedux from "react-router-redux";
 import * as History from 'history';
 
 
@@ -37,14 +37,16 @@ describe("redux-bootstrap", () => {
             });
         };
 
-        expect(throw1).to.throw("Null argument options.");
-        expect(throw2).to.throw("Invalid configuration field: reducers.");
-        expect(throw3).to.throw("Invalid configuration field: routes.");
+        expect(throw1).toThrow("Null argument options.");
+        expect(throw2).toThrow("Invalid configuration field: reducers.");
+        expect(throw3).toThrow("Invalid configuration field: routes.");
 
     });
 
     describe("Should be able to bootstrap applications.", () => {
-        before(() => {
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000
+4	
+        beforeAll(() => {
             bootstrap({
                 container: "root",
                 initialState: {},
@@ -55,7 +57,7 @@ describe("redux-bootstrap", () => {
 
         });
 
-        after(() => {
+        afterAll(() => {
             // https://facebook.github.io/react/docs/top-level-api.html#reactdom.unmountcomponentatnode
             const rootNode = document.getElementById(CONTAINER_ID);
             unmountComponentAtNode(rootNode);
@@ -65,7 +67,7 @@ describe("redux-bootstrap", () => {
 
         it("Should be able to render the home page.", (done) => {
             setTimeout(() => {
-                expect($("#home_page_title").text()).eql("Home Page!");
+                expect($("#home_page_title").text()).toEqual("Home Page!");
                 done();
             }, 20);
         });
@@ -74,7 +76,7 @@ describe("redux-bootstrap", () => {
             let usersLink = document.getElementById("link_to_users");
             usersLink.click();
             setTimeout(() => {
-                expect($("#users_page_title").text()).eql("Users Page!");
+                expect($("#users_page_title").text()).toEqual("Users Page!");
                 done();
             }, 30);
         });
@@ -83,7 +85,7 @@ describe("redux-bootstrap", () => {
             let reposLink = document.getElementById("link_to_repos");
             reposLink.click();
             setTimeout(() => {
-                expect($("#repos_page_title").text()).eql("Repos Page!");
+                expect($("#repos_page_title").text()).toEqual("Repos Page!");
                 done();
             }, 30);
         });
@@ -92,7 +94,7 @@ describe("redux-bootstrap", () => {
             let homeLink = document.getElementById("link_to_home");
             homeLink.click();
             setTimeout(() => {
-                expect($("#home_page_title").text()).eql("Home Page!");
+                expect($("#home_page_title").text()).toEqual("Home Page!");
                 done();
             }, 50);
         });
@@ -106,8 +108,8 @@ describe("redux-bootstrap", () => {
             setTimeout(() => {
 
                 // check counter and page title
-                expect($("#users_page_title").text()).eql("Users Page!");
-                expect($("#user_count").text()).eql("0");
+                expect($("#users_page_title").text()).toEqual("Users Page!");
+                expect($("#user_count").text()).toEqual("0");
 
                 // trigger increase counter
                 let addUserBtn = document.getElementById("add_user_btn");
@@ -115,7 +117,7 @@ describe("redux-bootstrap", () => {
 
                 // update counter
                 setTimeout(() => {
-                    expect($("#user_count").text()).eql("1");
+                    expect($("#user_count").text()).toEqual("1");
                     done();
                 }, 30);
 
@@ -128,7 +130,7 @@ describe("redux-bootstrap", () => {
     describe("Should be able to bootstrap again.", () => {
 
         let result: interfaces.BootstrapResult;
-        before(() => {
+        beforeAll(() => {
             result = bootstrap({
                 container: "root",
                 initialState: {},
@@ -140,13 +142,13 @@ describe("redux-bootstrap", () => {
 
 
         it("Should expose history, root, store in result.", () => {
-            expect(result).to.be.ok;
-            expect(result).to.have.property("history");
-            expect(result).to.have.property("root");
-            expect(result).to.have.property("store");
+            expect(result).toMatchObject;
+            expect(result).toHaveProperty("history");
+            expect(result).toHaveProperty("root");
+            expect(result).toHaveProperty("store");
         });
 
-        after(() => {
+        afterAll(() => {
             const rootNode = document.getElementById(CONTAINER_ID);
             unmountComponentAtNode(rootNode);
             rootNode.innerHTML = "";
@@ -157,10 +159,10 @@ describe("redux-bootstrap", () => {
     describe("Should be able to bootstrap with hashHistory.", () => {
 
         let result: interfaces.BootstrapResult;
-        before(() => {
+        beforeAll(() => {
             result = bootstrap({
                 container: "root",
-                // createHistory: createHashHistory,
+                createHistory: createHashHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),
@@ -170,7 +172,7 @@ describe("redux-bootstrap", () => {
 
         it("Should be able to render the home page.", (done) => {
             setTimeout(() => {
-                expect($("#home_page_title").text()).eql("Home Page!");
+                expect($("#home_page_title").text()).toEqual("Home Page!");
                 done();
             }, 20);
         });
@@ -179,12 +181,12 @@ describe("redux-bootstrap", () => {
             let usersLink = document.getElementById("link_to_users");
             usersLink.click();
             setTimeout(() => {
-                expect($("#users_page_title").text()).eql("Users Page!");
+                expect($("#users_page_title").text()).toEqual("Users Page!");
                 done();
             }, 30);
         });
 
-        after(() => {
+        afterAll(() => {
             const rootNode = document.getElementById(CONTAINER_ID);
             unmountComponentAtNode(rootNode);
             rootNode.innerHTML = "";
@@ -197,7 +199,7 @@ describe("redux-bootstrap", () => {
         let history: History.History;
         let store: Redux.Store<any>;
 
-        before(() => {
+        beforeAll(() => {
             const result = bootstrap({
                 container: "root",
                 initialState: {},
@@ -205,7 +207,7 @@ describe("redux-bootstrap", () => {
                 reducers: getReducers(),
                 routes: getRoutes()
             });
-            // history = result.history;
+            history = result.history;
             store = result.store;
         });
 
@@ -245,7 +247,7 @@ describe("redux-bootstrap", () => {
             store.dispatch(push("/"));
         });
 
-        after(() => {
+        afterAll(() => {
             const rootNode = document.getElementById(CONTAINER_ID);
             unmountComponentAtNode(rootNode);
         });
@@ -255,10 +257,10 @@ describe("redux-bootstrap", () => {
     describe("Should bootstrap with memoryHistory and renderToStaticMarkup.", () => {
 
         let result: interfaces.BootstrapResult;
-        before(() => {
+        beforeAll(() => {
             result = bootstrap({
                 container: "root",
-                // createHistory: createMemoryHistory,
+                createHistory: createMemoryHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),
@@ -269,8 +271,8 @@ describe("redux-bootstrap", () => {
         });
 
         it("Should be able to render the home page to string.", () => {
-            expect(result.output).to.be.string;
-            expect(result.output).to.include('<div id="home_page_title">Home Page!</div>');
+            expect(result.output).toBe.toString;
+            expect(result.output).toContain('<div id="home_page_title">Home Page!</div>');
         });
 
     });
@@ -278,23 +280,23 @@ describe("redux-bootstrap", () => {
     describe("Should bootstrap with memoryHistory and renderToStaticMarkup, with navigation.", () => {
 
         let result: interfaces.BootstrapResult;
-        before(() => {
+        beforeAll(() => {
             result = bootstrap({
                 container: "root",
-                // createHistory: createMemoryHistory,
+                createHistory: createMemoryHistory,
                 initialState: {},
                 middlewares: [thunk],
                 reducers: getReducers(),
                 render: () => { /*  skip first render, we navigate first */ },
                 routes: getRoutes()
             });
-            // result.history.push("/users");
+            result.history.push("/users");
             result.output = renderToStaticMarkup(result.root);
         });
 
         it("Should be able to render the users page to string.", () => {
-            expect(result.output).to.be.string;
-            expect(result.output).to.include('<div id="users_page_title">Users Page!</div>');
+            expect(result.output).toBe.toString;
+            expect(result.output).toContain('<div id="users_page_title">Users Page!</div>');
         });
 
     });
@@ -304,7 +306,7 @@ describe("redux-bootstrap", () => {
         let onErrorFlag = false;
         let result: interfaces.BootstrapResult;
         let store: Redux.Store<any>;
-        before(() => {
+        beforeAll(() => {
             onUpdateFlag = false;
             onErrorFlag = false;
             result = bootstrap({
@@ -324,12 +326,12 @@ describe("redux-bootstrap", () => {
         it("Should be able to trigger onUpdate callback when there is an update in router", () => {
             store.dispatch(push("/"));
             store.dispatch(push("/users"));
-            expect(onUpdateFlag).to.eql(true);
+            expect(onUpdateFlag).toEqual(true);
         });
 
          it("Should be able to trigger onError callback when error occurs when doing transition in routes", () => {
             store.dispatch(push("/error"));
-            expect(onErrorFlag).to.eql(true);
+            expect(onErrorFlag).toEqual(true);
         });
 
     });

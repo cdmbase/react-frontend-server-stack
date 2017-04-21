@@ -41,7 +41,7 @@ namespace interfaces {
 
     export interface RootComponentProps {
         store: Redux.Store<any>;
-        // history: History.History;
+        history: History.History;
         routes: JSX.Element;
     }
 

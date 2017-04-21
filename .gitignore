@@ -44,3 +44,4 @@ typings
 .idea
 .vscode
 tmp
+.DS_Store

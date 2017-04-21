@@ -3,7 +3,7 @@ import { IndexRoute, Route, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // import * as Immutable from 'immutable';
-import { interfaces } from '../src/index';
+import { interfaces } from '../index';
 import * as Redux from 'redux';
 
 // ******************************************************************************
@@ -80,7 +80,7 @@ let userActions: any = { addUserAsync, addUserBegin, addUserSuccess };
 // * USER PAGE COMPONENT
 // ******************************************************************************
 function mapStateToPropsUserPage(state: any) {
-    return { users: state.get('users') };
+    return { users: state['users'] };
 }
 
 function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
@@ -91,8 +91,8 @@ function mapDispatchToPropsUserPage(dispatch: Redux.Dispatch<any>) {
 class UsersPage extends React.Component<any, any> {
     public render() {
         let label = 'Loading...';
-        if (this.props.users !== undefined && this.props.users.get('loading') === false) {
-            label = this.props.users.get('usersCount');
+        if (this.props.users !== undefined && this.props.users['loading'] === false) {
+            label = this.props.users['usersCount'];
         }
         return (
             <div>
@@ -125,7 +125,7 @@ let repoActions: any = { addRepoAsync, addRepoBegin, addRepoSuccess };
 // * REPOS PAGE COMPONENT
 // ******************************************************************************
 function mapStateToPropsReposPage(state: any) {
-    return { repos: state.get('repos') };
+    return { repos: state['repos'] };
 }
 
 function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch<any>) {
@@ -136,8 +136,8 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch<any>) {
 class ReposPage extends React.Component<any, any> {
     public render() {
         let label = 'Loading...';
-        if (this.props.repos !== undefined && this.props.repos.get('loading') === false) {
-            label = this.props.repos.get('reposCount');
+        if (this.props.repos !== undefined && this.props.repos['loading'] === false) {
+            label = this.props.repos['reposCount'];
         }
         return (
             <div>
@@ -185,7 +185,7 @@ function getReducers(): interfaces.ReducersOption {
             case ACTION_TYPES.ADD_USER_SUCCESS:
                 return previousState.merge({
                     loading: false,
-                    usersCount: (previousState.get('usersCount') + 1)
+                    usersCount: (previousState['usersCount'] + 1)
                 });
             default:
                 return previousState;
@@ -204,7 +204,7 @@ function getReducers(): interfaces.ReducersOption {
             case ACTION_TYPES.ADD_REPO_SUCCESS:
                 return previousState.merge({
                     loading: false,
-                    reposCount: (previousState.get('reposCount') + 1)
+                    reposCount: (previousState['reposCount'] + 1)
                 });
             default:
                 return previousState;
