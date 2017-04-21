@@ -2,8 +2,7 @@ import repoActions from "../../src/actions/repo_actions";
 import ACTION_TYPES from "../../src/constants/action_types";
 import * as Redux from "redux";
 import * as sinon from "sinon";
-import { expect } from "chai";
-import * as mocha from "mocha";
+import "jest";
 import consoleLog from "../consoleLog";
 
 describe("Repo Actions", () => {
@@ -27,8 +26,8 @@ describe("Repo Actions", () => {
         dispatchableAddRepoAsync({ dispatch: dispatchMockSpy })(dispatchMockSpy as any);
 
         setTimeout(() => {
-            expect(dispatchMockSpy.getCall(0).args[0].type).eql(ACTION_TYPES.ADD_REPO_BEGIN);
-            expect(dispatchMockSpy.getCall(1).args[0].type).eql(ACTION_TYPES.ADD_REPO_SUCCESS);
+            expect(dispatchMockSpy.getCall(0).args[0].type).toEqual(ACTION_TYPES.ADD_REPO_BEGIN);
+            expect(dispatchMockSpy.getCall(1).args[0].type).toEqual(ACTION_TYPES.ADD_REPO_SUCCESS);
             done();
         }, 100);
     });

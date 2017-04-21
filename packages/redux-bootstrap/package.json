@@ -77,7 +77,6 @@
     "apollo-client": "^1.0.0-rc.6",
     "awesome-typescript-loader": "^3.1.2",
     "browserify": "^14.0.0",
-    "chai": "^3.5.0",
     "envify": "^4.0.0",
     "html5-history-api": "^4.2.7",
     "invariant": "^2.2.2",

@@ -4,7 +4,8 @@
   "description": "redux-bootstrap example",
   "main": "src/index.tsx",
   "scripts": {
-    "test": "karma start",
+    "jest": "./node_modules/.bin/jest",
+    "test": "jest",
     "coverage": "npm test && open coverage/index.html",
     "start": "webpack-dev-server --hot --history-api-fallback",
     "stats": "NODE_ENV=production webpack && open dist/statistics.html",
@@ -20,6 +21,21 @@
     "react",
     "example"
   ],
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "<rootDir>/../../node_modules/ts-jest/coverageprocessor.js",
+    "testEnvironment": "jsdom",
+    "testRegex": ".*\\.test\\.tsx?$",
+    "testURL": "http://example.com",
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "js",
+      "json"
+    ]
+  },
   "author": "Remo H. Jansen <remo.jansen@wolksoftware.com>",
   "license": "MIT",
   "bugs": {
@@ -76,10 +92,11 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
-    "chai": "^3.5.0",
     "css-loader": "^0.27.3",
     "file-loader": "^0.10.1",
     "html5-history-api": "^4.2.7",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
     "postcss-loader": "^1.3.3",
     "raw-loader": "^0.5.1",
     "redux-immutable-state-invariant": "2.0.0",
@@ -89,6 +106,7 @@
     "sourcemap-istanbul-instrumenter-loader": "^0.2.0",
     "style-loader": "^0.16.0",
     "to-string-loader": "^1.1.5",
+    "ts-jest": "^19.0.10",
     "tslint": "^4.5.1",
     "tslint-loader": "^3.4.3",
     "typescript": "^2.2.1",

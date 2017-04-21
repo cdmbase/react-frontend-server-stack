@@ -1,6 +1,6 @@
 dist
 lib
-
+backup
 # Logs
 logs
 *.log
