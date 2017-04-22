@@ -1,14 +1,31 @@
 export namespace Store {
 
+interface FluxStandardAction {
+  type: string | symbol | any;
+  payload?: any;
+  error?: boolean | any;
+  meta?: any
+}
+
+// Core
+
     export interface Deps {
         FBSDK: any,
-        getState: () => Object;
+        getState: () => State;
         getUid: () => string;
         now: () => number;
         uuid: { v4: Function };
         validate: (json: Object) => any;
     };
 
+// Models
+
+    export interface User {
+        displayName: string;
+        email?: string;
+        id: string;
+        photoURL?: string;
+    }
 
     export interface AppState {
         baselineShown: boolean;
@@ -17,13 +34,6 @@ export namespace Store {
         menuShown: boolean;
         online: boolean;
         started: boolean;
-    }
-
-    export interface User {
-        displayName: string;
-        email?: string;
-        id: string;
-        photoURL?: string;
     }
 
     export interface AuthState {
@@ -54,15 +64,21 @@ export namespace Store {
         viewer?: User;
     };
 
+// State
+
     export interface State {
         app: Store.AppState;
         auth: Store.AuthState;
         config: Store.ConfigState;
         device: Store.DeviceState;
+        fields: any;
+        found: Object; // found router
         intl: Store.IntlState;
         users: Store.UsersState;
         [key: string]: any;
     };
+
+// Actions
 
     export type Action =
         | { type: 'APP_ERROR', payload: { error: Error } }
@@ -85,8 +101,7 @@ export namespace Store {
         | { type: 'SIGN_UP', payload: { providerName: string, options?: Object } }
         | { type: 'SIGN_UP_DONE', payload: { user?: User } }
         | { type: 'SIGN_UP_FAIL', payload: { error: Error } }
-        | { type: 'TOGGLE_BASELINE' }
-        | { type: 'QUERY_FIREBASE', payload: { ref: string } };
+        | { type: 'TOGGLE_BASELINE' };
 
 }
 

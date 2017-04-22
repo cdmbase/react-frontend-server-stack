@@ -24,3 +24,23 @@ export const setTheme = (theme: string): Store.Action => ({
     type: 'SET_THEME',
     payload: { theme },
 });
+
+const appStartedEpic = (action$: any, deps: Store.Deps) => {
+    const { getState } = deps;
+
+    const appOnline$ = Observable.create(observer => {
+        const onValue = snap => {
+            const online = snap.val();
+            if (online === getState().app.online) {
+                return;
+            }
+            observer.next(appOnline(online));
+        };
+    });
+
+    return action$ 
+        .filter((action: Store.Action) => action.type === 'APP_STARTED')
+        .mergeMap(() => Observable.merge(appOnline$));
+};
+
+export const epics = [appStartedEpic];

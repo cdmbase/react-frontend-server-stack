@@ -12,9 +12,8 @@ import {
 import { configureReducer } from './configureReducer';
 import { configureMiddleware } from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
-import isReactNative from './app/isReactNative';
-import { module } from './module';
 import { compose } from './lib/compose';
+
 
 export interface Options {
     initialState: any;
@@ -22,6 +21,7 @@ export interface Options {
     platformReducers?: ReducersMapObject;
     platformMiddleware?: Middleware[];
     platformStoreEnhancers?: [GenericStoreEnhancer];
+    moduleExist?: boolean;
 
 }
 
@@ -29,16 +29,14 @@ export interface IStore<T> extends Store<T> {
     asyncReducers: { [name: string]: Reducer<any> }
 }
 
-
-
-
-export const configureStore = (options: Options): Store<any> => {
+export function configureStore<T>(options: Options): IStore<T> {
     const {
-    initialState,
+        initialState,
         platformDeps = {},
         platformMiddleware = [],
         platformReducers = {},
         platformStoreEnhancers = [],
+        moduleExist = false,
   } = options;
     const reducer = configureReducer(platformReducers, initialState);
 
@@ -46,8 +44,9 @@ export const configureStore = (options: Options): Store<any> => {
         initialState,
         platformDeps,
         platformMiddleware,
+        moduleExist,
     )
-    const store: Store<any> = createStore(
+    const store = createStore<T>(
         reducer,
         initialState,
         compose(
@@ -57,28 +56,18 @@ export const configureStore = (options: Options): Store<any> => {
         ),
     );
 
-    //   const store1:IStore<any> =    store.asyncReducers = {};
+    store['asyncReducers'] = {};
 
     // Enable hot reloading for reducers.
-    if (module && module.hot && typeof module.hot.accept === 'function') {
-        if (isReactNative) {
-            // // React Native for some reason needs accept without the explicit path.
-            // // facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html
-            // module.hot.accept(() => {
-            //     const configureReducer = require('./configureReducer').default;
+    if (moduleExist) {
+        // Webpack for some reason needs accept with the explicit path.
+        System.import('./configureReducer').then(reducerModule => {
+            const configureReducer = reducerModule.default;
 
-            //     store.replaceReducer(configureReducer(platformReducers, initialState));
-            // });
-        } else {
-            // Webpack for some reason needs accept with the explicit path.
-            module.hot.accept('./configureReducer', () => {
-                const configureReducer = require('./configureReducer').default;
-
-                store.replaceReducer(configureReducer(platformReducers, initialState));
-            });
-        }
-    };
-    return store;
+            store.replaceReducer(configureReducer(platformReducers, initialState));
+        });
+    }
+    return store as IStore<T>;
 
 };
 
