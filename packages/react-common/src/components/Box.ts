@@ -1,6 +1,6 @@
-import type { Color, Theme } from '../themes/types';
-import React from 'react';
-import isReactNative from '../../common/app/isReactNative';
+import { Color, Theme } from '../themes/types';
+import * as React from 'react';
+import { isReactNative } from '@redux-bootstrap/core';
 
 // Universal styled Box component. The same API for browsers and React Native.
 // Some props are ommited or limited or set to match React Native behaviour.
@@ -13,13 +13,13 @@ import isReactNative from '../../common/app/isReactNative';
 //    borderTopWidth: StyleSheet.hairlineWidth,
 //  })}
 
-export type BoxProps = {
+export interface BoxProps extends React.HTMLAttributes<JSX.Element> {
   // sitr.us/2017/01/03/flow-cookbook-react.html
-  as?: () => React.Element<*>,
+  as?: JSX.Element;
   // Low level deliberately not typed.
-  style?: (theme: Theme, style: Object) => Object,
+  style?: (theme: Theme, style: Object) => Object;
   // Maybe rhythm props.
-  margin?: number | string,
+  margin?: number | string;
   marginHorizontal?: number | string,
   marginVertical?: number | string,
   marginBottom?: number | string,
@@ -65,31 +65,31 @@ export type BoxProps = {
   // Just value props.
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline',
   alignSelf?:
-    | 'auto'
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'stretch'
-    | 'baseline',
+  | 'auto'
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'stretch'
+  | 'baseline',
   flexBasis?: number | string,
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse',
   flexGrow?: number,
   flexShrink?: number,
   flexWrap?: 'wrap' | 'nowrap',
   justifyContent?:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around',
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around',
   opacity?: number,
   overflow?: 'visible' | 'hidden' | 'scroll',
   position?: 'absolute' | 'relative',
   zIndex?: number,
 };
 
-type BoxContext = {
-  View: () => React.Element<*>,
+export interface BoxContext {
+  View: JSX.Element,
   renderer: any, // TODO: Type it.
   theme: Theme,
 };
@@ -102,10 +102,10 @@ const setBorderTryEnsureRhythmViaPadding = (style, borderWidthProps) => {
     const paddingProp = borderWidthProp === 'borderBottomWidth'
       ? 'paddingBottom'
       : borderWidthProp === 'borderLeftWidth'
-          ? 'paddingLeft'
-          : borderWidthProp === 'borderRightWidth'
-              ? 'paddingRight'
-              : 'paddingTop';
+        ? 'paddingLeft'
+        : borderWidthProp === 'borderRightWidth'
+          ? 'paddingRight'
+          : 'paddingTop';
     const paddingPropValue = style[paddingProp];
     if (typeof paddingPropValue !== 'number') return;
     const compensatedPaddingPropValue = paddingPropValue - borderWidthPropValue;
@@ -183,16 +183,16 @@ const computeBoxStyle = (
     zIndex,
 
     ...props
-  },
+  }: BoxProps,
 ) => {
   let style = isReactNative
     ? {}
     : {
-        // Enforce React Native behaviour for browsers.
-        position: 'relative',
-        flexDirection: 'column',
-        display: 'flex',
-      };
+      // Enforce React Native behaviour for browsers.
+      position: 'relative',
+      flexDirection: 'column',
+      display: 'flex',
+    };
 
   const maybeRhythmProps = {
     bottom,
@@ -287,7 +287,7 @@ const computeBoxStyle = (
   return [style, props];
 };
 
-const Box = (
+const Box:React.SFC<BoxProps> = (
   {
     as,
     style,
@@ -300,7 +300,7 @@ const Box = (
     theme,
   }: BoxContext,
 ) => {
-  const Component = as || View;
+  const Component:JSX.Element = as || View;
   const [boxStyle, restProps] = computeBoxStyle(theme, props);
   const rule = renderer.renderRule(() => ({
     ...boxStyle,
@@ -308,11 +308,13 @@ const Box = (
   }));
   return (
     <Component
-      {...restProps}
-      {...{ [isReactNative ? 'style' : 'className']: rule }}
-    />
+      // {...restProps }
+      // {...{ [isReactNative ? 'style' : 'className']: rule } }
+  />
   );
 };
+
+
 
 Box.contextTypes = {
   View: React.PropTypes.func,
@@ -320,4 +322,4 @@ Box.contextTypes = {
   theme: React.PropTypes.object,
 };
 
-export default Box;
+// export default Box;

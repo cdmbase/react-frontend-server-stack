@@ -1,5 +1,5 @@
-import type { TextProps } from './Text';
-import React from 'react';
+import { TextProps } from './Text';
+import * as React from 'react';
 import Text from './Text';
 
 const Message = (props: TextProps) => {

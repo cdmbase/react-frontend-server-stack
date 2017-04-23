@@ -1,9 +1,9 @@
-import type { TextProps } from './Text';
-import type { Theme } from '../themes/types';
+import { TextProps } from './Text';
+import { Theme } from '../themes/types';
 import React from 'react';
 import Text, { computeTextStyle } from './Text';
 import color from 'color';
-import isReactNative from '../../common/app/isReactNative';
+import {isReactNative} from '@redux-bootstrap/core';
 
 // Universal text input component. By default, it looks like editable text.
 // For underline or the other effects, make a new component. Check Field.
@@ -14,7 +14,7 @@ export type TextInputProps = TextProps & {
   placeholderTextColor?: string,
 };
 
-type TextInputContext = {
+interface TextInputContext {
   TextInput: () => React.Element<*>,
   theme: Theme,
 };

@@ -1,27 +1,27 @@
-import type { ColorProps, Theme } from '../themes/types';
-import type { TextProps } from './Text';
-import Box from './Box';
-import React from 'react';
+import  { ColorProps, Theme } from '../themes/types';
+import  { TextProps } from './Text';
+import Box, { BoxProps } from './Box';
+import * as React from 'react';
 import Text, { computeTextStyle } from './Text';
-import isReactNative from '../../common/app/isReactNative';
+import {isReactNative} from '@redux-bootstrap/core';
 
-export type ButtonProps = ColorProps & TextProps & {
+export interface ButtonProps extends ColorProps, TextProps {
   // For blindness accessibility features. Consider making it mandatory.
   accessibilityLabel?: string,
   boxStyle?: (theme: Theme) => Object,
   children?: any,
   disabled?: boolean,
-  onPress?: (e?: SyntheticMouseEvent) => any,
+  onPress?: (e?: React.SyntheticEvent<any>) => any,
   outline?: boolean,
   textStyle?: (theme: Theme) => Object,
 };
 
-type ButtonContext = {
-  Button: () => React.Element<*>,
+export interface ButtonContext {
+  Button: () => JSX.Element,
   theme: Theme,
 };
 
-const Button = (
+const Button:React.SFC<BoxProps> = (
   {
     as,
     accessibilityLabel,

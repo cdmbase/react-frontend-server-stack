@@ -1,4 +1,4 @@
-import type { State } from '../types';
+import { State } from '../types';
 import Box from './Box';
 import OutlineButton from './OutlineButton';
 import React from 'react';

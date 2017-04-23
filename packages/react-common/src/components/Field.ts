@@ -1,7 +1,7 @@
-import type { TextInputProps } from './TextInput';
+import { TextInputProps } from './TextInput';
 import Box from './Box';
 import TextInput from './TextInput';
-import React from 'react';
+import * as React from 'react';
 import Text from './Text';
 
 // Custom TextInput with label and error.

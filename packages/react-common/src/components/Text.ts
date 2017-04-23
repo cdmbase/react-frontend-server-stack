@@ -1,15 +1,15 @@
-import type { BoxProps } from './Box';
-import type { Color, Theme } from '../themes/types';
+import { BoxProps } from './Box';
+import { Color, Theme } from '../themes/types';
 import Box from './Box';
-import React from 'react';
+import * as React from 'react';
 import colorLib from 'color';
-import isReactNative from '../../common/app/isReactNative';
+import { isReactNative } from '@redux-bootstrap/core';
 
 // Universal styled Text component. The same API for browsers and React Native.
 // Some props are ommited or limited or set to match React Native behaviour.
 // Use style prop for platform specific styling.
 
-export type TextProps = BoxProps & {
+export interface TextProps extends BoxProps {
   fontFamily?: string,
   size?: number,
   align?: 'left' | 'right' | 'center' | 'justify',
@@ -24,7 +24,7 @@ export type TextProps = BoxProps & {
 };
 
 type TextContext = {
-  Text: () => React.Element<*>,
+  Text: () => JSX.Element,
   theme: Theme,
 };
 
@@ -122,7 +122,7 @@ const computePlatformTextStyle = (boxStyle, textStyle, fixWebFontSmoothing) => {
   return textStyle;
 };
 
-const Text = (
+const Text: React.StatelessComponent<React.HTMLProps<JSX.Element>> = (
   {
     as,
     style,
@@ -137,18 +137,18 @@ const Text = (
   const [textStyle, restProps] = computeTextStyle(theme, props);
   return (
     <Box
-      as={as || PlatformText}
-      {...restProps}
-      style={(theme, boxStyle) =>
-        computePlatformTextStyle(
-          boxStyle,
-          {
-            ...textStyle,
-            ...(style && style(theme, { ...boxStyle, ...textStyle })),
-          },
-          fixWebFontSmoothing,
-        )}
-    />
+      as={ as || PlatformText }
+  {...restProps }
+  style = {(theme, boxStyle) =>
+computePlatformTextStyle(
+  boxStyle,
+  {
+    ...textStyle,
+    ...(style && style(theme, { ...boxStyle, ...textStyle })),
+  },
+  fixWebFontSmoothing,
+)}
+/>
   );
 };
 

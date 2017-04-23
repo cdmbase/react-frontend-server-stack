@@ -1,5 +1,5 @@
-import type { TextProps } from './Text';
-import React from 'react';
+import { TextProps } from './Text';
+import * as React from 'react';
 import Text from './Text';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -14,15 +14,15 @@ const messages = defineMessages({
   },
 });
 
-type LoadingProps = TextProps & {
+interface LoadingProps extends TextProps {
   intl: $IntlShape,
 };
 
-type LoadingState = {|
-  currentText: ?Object,
-|};
+interface LoadingState {
+  currentText?: Object,
+};
 
-class Loading extends React.Component {
+class Loading extends React.Component<LoadingProps, LoadingState> {
   state: LoadingState = {
     currentText: null,
   };
@@ -58,11 +58,11 @@ class Loading extends React.Component {
     const { intl, ...restProps } = this.props;
 
     return (
-      <Text {...restProps}>
-        {intl.formatMessage(currentText)}...
-      </Text>
+      <Text {...restProps } >
+      { intl.formatMessage(currentText) }...
+  </Text>
     );
-  }
+}
 }
 
 export default injectIntl(Loading);

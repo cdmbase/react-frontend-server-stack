@@ -3,10 +3,10 @@ import Heading from './Heading';
 import Paragraph from './Paragraph';
 import React from 'react';
 
-type PageHeaderProps = {|
+interface PageHeaderProps {
   heading: string,
   description?: string,
-|};
+};
 
 const PageHeader = ({ heading, description }: PageHeaderProps) => (
   <Box

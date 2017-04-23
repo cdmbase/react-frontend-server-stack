@@ -1,5 +1,3 @@
-import isReactNative from './isReactNative';
+import { isReactNative } from './isReactNative';
 
-const isClient = process.env.IS_BROWSER || isReactNative;
-
-export default isClient;
+export const isClient = process.env.IS_BROWSER || isReactNative;

@@ -8,11 +8,12 @@ import {
     ReducersMapObject,
     GenericStoreEnhancer,
 } from 'redux';
-
+import { Epic } from 'redux-observable';
 import { configureReducer } from './configureReducer';
 import { configureMiddleware } from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
 import { compose } from './lib/compose';
+import { Subject } from 'rxjs/Subject';
 
 
 export interface Options {
@@ -26,7 +27,9 @@ export interface Options {
 }
 
 export interface IStore<T> extends Store<T> {
-    asyncReducers: { [name: string]: Reducer<any> }
+    asyncReducers: { [name: string]: Reducer<any> };
+    asyncEpics: { [name: string]: Epic<any, any> };
+    epic$?: any;
 }
 
 export function configureStore<T>(options: Options): IStore<T> {

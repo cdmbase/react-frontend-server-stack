@@ -1,23 +1,23 @@
-import type { BoxProps } from './Box';
-import type { Theme } from '../themes/types';
+import { BoxProps } from './Box';
+import { Theme } from '../themes/types';
 import Box from './Box';
-import React from 'react';
-import isReactNative from '../app/isReactNative';
+import * as React from 'react';
+import { isReactNative } from '@redux-bootstrap/core';
 
 // TODO: Implement auto jsx-a11y/img-has-alt.
 
-type Size = {|
+interface Size {
   height: number,
   width: number,
-|};
+};
 
-type ImageProps = BoxProps & {
+interface ImageProps extends BoxProps {
   size: Size,
   src: string | number, // number, because src={require('./foo.png')}
 };
 
-type ImageContext = {
-  Image: () => React.Element<*>,
+interface ImageContext {
+  Image: () => JSX.Element,
   theme: Theme,
 };
 
@@ -49,11 +49,11 @@ const Image = (
   }: ImageContext,
 ) => (
   <Box
-    as={PlatformImage}
-    {...verticalRhythmSize(size, theme.typography.lineHeight)}
-    {...{ [isReactNative ? 'source' : 'src']: src }}
-    {...props}
-  />
+    as={ PlatformImage }
+{...verticalRhythmSize(size, theme.typography.lineHeight) }
+{...{ [isReactNative ? 'source' : 'src']: src } }
+{...props }
+/>
 );
 
 Image.contextTypes = {

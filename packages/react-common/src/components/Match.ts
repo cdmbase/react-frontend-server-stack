@@ -1,5 +1,5 @@
-import type { State } from '../../common/types';
-import React from 'react';
+import { State } from '../../common/types';
+import * as React from 'react';
 import { Match as ReactRouterMatch, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 

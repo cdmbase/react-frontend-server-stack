@@ -1,4 +1,4 @@
-import type { ButtonProps } from './Button';
+import { ButtonProps } from './Button';
 import React from 'react';
 import Button from './Button';
 

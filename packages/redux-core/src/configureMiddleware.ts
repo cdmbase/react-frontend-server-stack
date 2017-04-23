@@ -1,7 +1,6 @@
 import configureDeps from './configureDeps';
 import configureEpics from './configureEpics';
 import { createEpicMiddleware } from 'redux-observable';
-import isClient from './app/isClient';
 
 // Like redux-thunk, but with just one argument for dependencies.
 const injectMiddleware = deps =>

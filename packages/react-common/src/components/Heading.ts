@@ -1,7 +1,7 @@
-import type { TextProps } from './Text';
-import type { Theme } from '../themes/types';
+import { TextProps } from './Text';
+import { Theme } from '../themes/types';
 import Text from './Text';
-import React from 'react';
+import * as React from 'react';
 
 type HeadingContext = {
   theme: Theme,

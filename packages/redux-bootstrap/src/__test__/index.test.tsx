@@ -45,7 +45,7 @@ describe("redux-bootstrap", () => {
 
     describe("Should be able to bootstrap applications.", () => {
         // jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000
-4	
+	
         beforeAll(() => {
             bootstrap({
                 container: "root",
