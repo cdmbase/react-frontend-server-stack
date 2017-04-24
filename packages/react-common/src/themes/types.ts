@@ -3,7 +3,7 @@ import { OpenColor } from './openColor';
 // Theme.
 
 // Because { [color: Color]?: boolean } doesn't work, we have to define props.
-export interface ColorProps {
+export type ColorProps = {
   // Don't hesitate to add your own.
   primary?: boolean,
   success?: boolean,
@@ -12,13 +12,14 @@ export interface ColorProps {
   black?: boolean,
   white?: boolean,
   gray?: boolean,
-  open: OpenColor,
 };
 
 export type Color = keyof ColorProps;
-export type ColorEnum = {
-  [color in keyof ColorProps]: string;
-};
+export type ColorTypes = {
+  open: OpenColor,
+} & {
+    [color in keyof ColorProps]: string;
+  };
 
 export type Theme = {
   typography: {
@@ -26,7 +27,7 @@ export type Theme = {
     lineHeight: number,
     rhythm: (number) => number,
   };
-  colors: ColorEnum;
+  colors: ColorTypes;
   states: {
     active: {
       darken: number,

@@ -50,6 +50,8 @@ var webpack_opts = {
     // assume a corresponding global variable exists and use that instead.
     // this is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: [nodeExternals({ modulesDir: "../../node_modules" })]
+    externals: [nodeExternals({ modulesDir: "../../node_modules" }), {
+        "@redux-bootstrap/core": "@redux-bootstrap/core"
+    }]
 };
 module.exports = webpack_opts;

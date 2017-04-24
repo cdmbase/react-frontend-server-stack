@@ -5,7 +5,7 @@ import * as React from 'react';
 import Text from './Text';
 
 // Custom TextInput with label and error.
-type FieldProps = TextInputProps & { label?: string, error?: string };
+export type FieldProps = TextInputProps & { label?: string, error?: string };
 
 const Field = ({ label, error, size = 0, ...props }: FieldProps) => (
   <Box>

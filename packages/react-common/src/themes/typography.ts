@@ -4,7 +4,8 @@
 // modularscale.com
 // type-scale.com
 
-const scale = {
+
+export const scale = {
   step0: 1,
   step1: 15 / 16,
   step2: 8 / 9,
@@ -26,7 +27,7 @@ const scale = {
 
 export interface typographyProps {
   fontSize: number,
-  fontSizeScale: number | $Keys<typeof scale>,
+  fontSizeScale: number | keyof (typeof scale),
   lineHeight: number,
 };
 

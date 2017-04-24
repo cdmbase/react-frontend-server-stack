@@ -2,7 +2,7 @@ import { TextProps } from './Text';
 import * as React from 'react';
 import Text from './Text';
 
-const Message = (props: TextProps) => {
+const Message:React.SFC<TextProps> = (props: TextProps) => {
   const {
     bold = true,
     color = 'white',

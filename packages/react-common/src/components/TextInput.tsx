@@ -1,7 +1,6 @@
-import { TextProps } from './Text';
 import { Theme } from '../themes/types';
-import React from 'react';
-import Text, { computeTextStyle } from './Text';
+import * as React from 'react';
+import Text, { computeTextStyle, TextProps } from './Text';
 import color from 'color';
 import {isReactNative} from '@redux-bootstrap/core';
 
@@ -15,14 +14,14 @@ export type TextInputProps = TextProps & {
 };
 
 interface TextInputContext {
-  TextInput: () => React.Element<*>,
+  TextInput: () => React.ReactElement<TextInputProps>,
   theme: Theme,
 };
 
 const computePlaceholderColor = textColor =>
   color(textColor).fade(0.5).toString();
 
-const TextInput = (
+const TextInput:React.SFC<TextInputProps> = (
   props: TextInputProps,
   {
     TextInput: PlatformTextInput,
@@ -33,11 +32,12 @@ const TextInput = (
 
   const {
     disabled = false,
-    height = textStyle.lineHeight / theme.typography.lineHeight,
+    // textStyle has or, to workaround using string
+    height = textStyle['lineHeight'] / theme.typography.lineHeight,
     // Some user agents (Chrome, RN Android) have default input padding.
     // We need to reset it to ensure consistent rendering across platforms.
     padding = 0,
-    placeholderTextColor = computePlaceholderColor(textStyle.color),
+    placeholderTextColor = computePlaceholderColor(textStyle['color']),
     style,
     ...restProps
   } = props;

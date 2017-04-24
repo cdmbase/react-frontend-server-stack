@@ -10,7 +10,7 @@ interface FluxStandardAction {
 // Core
 
     export interface Deps {
-        FBSDK: any,
+        FBSDK: any;
         getState: () => State;
         getUid: () => string;
         now: () => number;

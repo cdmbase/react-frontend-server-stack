@@ -13,83 +13,83 @@ import { isReactNative } from '@redux-bootstrap/core';
 //    borderTopWidth: StyleSheet.hairlineWidth,
 //  })}
 
-export interface BoxProps extends React.HTMLAttributes<JSX.Element> {
+export type BoxProps = React.CSSProperties & {
   // sitr.us/2017/01/03/flow-cookbook-react.html
-  as?: JSX.Element;
+  as?: () => React.ReactElement<BoxProps>;
   // Low level deliberately not typed.
   style?: (theme: Theme, style: Object) => Object;
   // Maybe rhythm props.
-  margin?: number | string;
-  marginHorizontal?: number | string,
-  marginVertical?: number | string,
-  marginBottom?: number | string,
-  marginLeft?: number | string,
-  marginRight?: number | string,
-  marginTop?: number | string,
-  padding?: number | string,
-  paddingHorizontal?: number | string,
-  paddingVertical?: number | string,
-  paddingBottom?: number | string,
-  paddingLeft?: number | string,
-  paddingRight?: number | string,
-  paddingTop?: number | string,
-  height?: number | string,
-  maxHeight?: number | string,
-  maxWidth?: number | string,
-  minHeight?: number | string,
-  minWidth?: number | string,
-  width?: number | string,
-  bottom?: number | string,
-  left?: number | string,
-  right?: number | string,
-  top?: number | string,
-  flex?: number,
-  backgroundColor?: Color,
+  // margin?: number | string;
+  // marginHorizontal?: number | string,
+  // marginVertical?: number | string,
+  // marginBottom?: number | string,
+  // marginLeft?: number | string,
+  // marginRight?: number | string,
+  // marginTop?: number | string,
+  // padding?: number | string,
+  // paddingHorizontal?: number | string,
+  // paddingVertical?: number | string,
+  // paddingBottom?: number | string,
+  // paddingLeft?: number | string,
+  // paddingRight?: number | string,
+  // paddingTop?: number | string,
+  // height?: number | string,
+  // maxHeight?: number | string,
+  // maxWidth?: number | string,
+  // minHeight?: number | string,
+  // minWidth?: number | string,
+  // width?: number | string,
+  // bottom?: number | string,
+  // left?: number | string,
+  // right?: number | string,
+  // top?: number | string,
+  // flex?: number,
+  // backgroundColor?: Color,
   // Border props.
-  borderBottomColor?: Color,
-  borderBottomLeftRadius?: number,
-  borderBottomRightRadius?: number,
-  borderBottomWidth?: number,
-  borderColor?: Color,
-  borderLeftColor?: Color,
-  borderLeftWidth?: number,
-  borderRadius?: number,
-  borderRightColor?: Color,
-  borderRightWidth?: number,
-  borderStyle?: 'solid' | 'dotted' | 'dashed',
-  borderTopColor?: Color,
-  borderTopLeftRadius?: number,
-  borderTopRightRadius?: number,
-  borderTopWidth?: number,
-  borderWidth?: number,
+  // borderBottomColor?: Color,
+  // borderBottomLeftRadius?: number,
+  // borderBottomRightRadius?: number,
+  // borderBottomWidth?: number,
+  // borderColor?: Color,
+  // borderLeftColor?: Color,
+  // borderLeftWidth?: number,
+  // borderRadius?: number,
+  // borderRightColor?: Color,
+  // borderRightWidth?: number,
+  // borderStyle?: 'solid' | 'dotted' | 'dashed',
+  // borderTopColor?: Color,
+  // borderTopLeftRadius?: number,
+  // borderTopRightRadius?: number,
+  // borderTopWidth?: number,
+  // borderWidth?: number,
   // Just value props.
-  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline',
-  alignSelf?:
-  | 'auto'
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'stretch'
-  | 'baseline',
-  flexBasis?: number | string,
-  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse',
-  flexGrow?: number,
-  flexShrink?: number,
-  flexWrap?: 'wrap' | 'nowrap',
-  justifyContent?:
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'space-between'
-  | 'space-around',
-  opacity?: number,
-  overflow?: 'visible' | 'hidden' | 'scroll',
-  position?: 'absolute' | 'relative',
-  zIndex?: number,
+  // alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline',
+  // alignSelf?:
+  // | 'auto'
+  // | 'flex-start'
+  // | 'flex-end'
+  // | 'center'
+  // | 'stretch'
+  // | 'baseline',
+  // flexBasis?: number | string,
+  // flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse',
+  // flexGrow?: number,
+  // flexShrink?: number,
+  // flexWrap?: 'wrap' | 'nowrap',
+  // justifyContent?:
+  // | 'flex-start'
+  // | 'flex-end'
+  // | 'center'
+  // | 'space-between'
+  // | 'space-around',
+  // opacity?: number,
+  // overflow?: 'visible' | 'hidden' | 'scroll',
+  // position?: 'absolute' | 'relative',
+  // zIndex?: number,
 };
 
-export interface BoxContext {
-  View: JSX.Element,
+export type BoxContext = {
+  View: () => React.ReactElement<BoxProps>,
   renderer: any, // TODO: Type it.
   theme: Theme,
 };
@@ -183,7 +183,7 @@ const computeBoxStyle = (
     zIndex,
 
     ...props
-  }: BoxProps,
+  }: any,
 ) => {
   let style = isReactNative
     ? {}
@@ -298,9 +298,9 @@ const Box:React.SFC<BoxProps> = (
     View,
     renderer,
     theme,
-  }: BoxContext,
+  }: any,
 ) => {
-  const Component:JSX.Element = as || View;
+  const Component = as || View;
   const [boxStyle, restProps] = computeBoxStyle(theme, props);
   const rule = renderer.renderRule(() => ({
     ...boxStyle,
@@ -308,18 +308,18 @@ const Box:React.SFC<BoxProps> = (
   }));
   return (
     <Component
-      // {...restProps }
-      // {...{ [isReactNative ? 'style' : 'className']: rule } }
+       {...restProps }
+       {...{ [isReactNative ? 'style' : 'className']: rule } }
   />
   );
 };
 
 
-
+    
 Box.contextTypes = {
   View: React.PropTypes.func,
   renderer: React.PropTypes.object,
   theme: React.PropTypes.object,
 };
 
-// export default Box;
+export default Box;

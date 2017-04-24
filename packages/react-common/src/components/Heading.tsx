@@ -7,7 +7,7 @@ type HeadingContext = {
   theme: Theme,
 };
 
-const Heading = (props: TextProps, { theme }: HeadingContext) => {
+const Heading:React.SFC<TextProps> = (props: TextProps, { theme }: HeadingContext) => {
   const {
     bold = true,
     fontFamily = theme.heading.fontFamily,

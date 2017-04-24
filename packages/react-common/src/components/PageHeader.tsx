@@ -1,14 +1,14 @@
 import Box from './Box';
 import Heading from './Heading';
 import Paragraph from './Paragraph';
-import React from 'react';
+import * as React from 'react';
 
-interface PageHeaderProps {
+export type PageHeaderProps = {
   heading: string,
   description?: string,
 };
 
-const PageHeader = ({ heading, description }: PageHeaderProps) => (
+const PageHeader:React.SFC<PageHeaderProps> = ({ heading, description }: PageHeaderProps) => (
   <Box
     borderBottomWidth={2}
     borderStyle="solid"

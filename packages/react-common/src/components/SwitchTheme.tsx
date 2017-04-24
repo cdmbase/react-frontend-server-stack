@@ -1,11 +1,10 @@
-import { State } from '../../common/types';
+import { Store, setTheme } from '@redux-bootstrap/core';
 import Box from './Box';
 import Button from './Button';
-import React from 'react';
+import * as React from 'react';
 import Text from './Text';
 import { compose } from 'ramda';
 import { connect } from 'react-redux';
-import { setTheme } from '../app/actions';
 
 type SwitchThemeProps = {
   currentTheme: string,
@@ -57,7 +56,7 @@ const SwitchTheme = (
 
 export default compose(
   connect(
-    (state: State) => ({
+    (state: Store.State) => ({
       currentTheme: state.app.currentTheme,
     }),
     { setTheme },

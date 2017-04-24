@@ -1,10 +1,9 @@
-import { State } from '../types';
+import { Store, toggleBaseline } from '@redux-bootstrap/core';
 import Box from './Box';
 import OutlineButton from './OutlineButton';
-import React from 'react';
+import * as React from 'react';
 import { compose } from 'ramda';
 import { connect } from 'react-redux';
-import { toggleBaseline } from '../app/actions';
 
 // Test vertical rhythm visually. Inspired by basehold.it
 
@@ -13,7 +12,7 @@ type ToggleBaselineProps = {
   toggleBaseline: typeof toggleBaseline,
 };
 
-const ToggleBaseline = (
+const ToggleBaseline:React.SFC<ToggleBaselineProps> = (
   {
     baselineShown,
     toggleBaseline,
@@ -22,7 +21,7 @@ const ToggleBaseline = (
   <Box flexDirection="row">
     <OutlineButton
       size={-1}
-      key={baselineShown} // To enforce blur after click.
+      //key={baselineShown} // To enforce blur after click.// opened issue #1356 with este
       onPress={toggleBaseline}
     >
       {baselineShown ? 'Hide Baseline' : 'Show Baseline'}
@@ -32,7 +31,7 @@ const ToggleBaseline = (
 
 export default compose(
   connect(
-    (state: State) => ({
+    (state: Store.State) => ({
       baselineShown: state.app.baselineShown,
     }),
     { toggleBaseline },

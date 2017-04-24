@@ -1,8 +1,8 @@
 import { ButtonProps } from './Button';
-import React from 'react';
+import * as React from 'react';
 import Button from './Button';
 
-const OutlineButton = (props: ButtonProps) => (
+const OutlineButton:React.SFC<ButtonProps> = (props: ButtonProps) => (
   <Button
     // TODO: Recheck after Flow 0.38, propValues should not be required.
     gray={true} // eslint-disable-line react/jsx-boolean-value
