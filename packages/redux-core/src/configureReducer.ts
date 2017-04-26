@@ -24,7 +24,7 @@ const resetStateOnSignOutReducer = (reducer: Redux.Reducer<any>, initialState: S
         return reducer(stateWithoutSensitiveData, action);
     };
 
-export function configureReducer(
+function configureReducer(
     asyncReducers: Redux.ReducersMapObject,
     initialState: Store.State): Redux.Reducer<any> {
     let reducers: Redux.ReducersMapObject = {
@@ -55,3 +55,5 @@ export const injectAsyncReducer = (store: IStore<any>) => (name, asyncReducer: R
     store.asyncReducers[name] = asyncReducer;
     store.replaceReducer(configureReducer(store.asyncReducers, store.getState()));
 };
+
+export default configureReducer;

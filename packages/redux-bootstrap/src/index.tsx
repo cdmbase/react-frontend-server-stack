@@ -7,7 +7,7 @@ import getRoot from './containers/root';
 import interfaces from './interfaces/interfaces';
 import * as Redux from 'redux';
 import * as History from 'history';
-import { configureStore, Options as StoreOptions } from '@redux-bootstrap/core';
+import { configureStore, StoreOptions } from '@redux-bootstrap/core';
 
 
 const initialRouterReducerState = {
@@ -50,16 +50,17 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     let routerMddlwr: Redux.Middleware = routerMiddleware(routerHistory);
 
     // More info at https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md#windowdevtoolsextensionconfig
-    // let devToolsOptions: interfaces.DevToolsOptions = {
-    //     serialize: {
-    //         immutable: any
-    //     }
-    // };
+    let devToolsOptions: interfaces.DevToolsOptions = {
+    };
+    let devTools: interfaces.DevTools = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    const composeEnhancers = devTools ? devTools(devToolsOptions) : Redux.compose;
+
     const storeOptions: StoreOptions = {
         platformMiddleware: [...middlewares],
         platformReducers: reducers,
         initialState,
-        // platformStoreEnhancers: [devToolsOptions]
+        moduleExist: options.moduleExist,
+        // platformStoreEnhancers: [composeEnhancers]
     };
     const store = configureStore(storeOptions);
     // const store = configureStore([...middlewares, routerMddlwr], rootReducer, immutableInitialState, devToolsOptions);
@@ -70,7 +71,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     });
 
     // root component
-    let root = getRoot(store, history, routes, options.routerProps);
+    let root = getRoot(store, history, routes, options.routerProps, options.wrapperHook);
 
 
     // Render Root coponent

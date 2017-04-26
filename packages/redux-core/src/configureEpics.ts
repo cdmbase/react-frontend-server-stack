@@ -1,4 +1,4 @@
-// import 'rxjs';
+import 'rxjs';
 
 import { combineEpics } from 'redux-observable';
 import { epics as appEpics } from './app/actions';

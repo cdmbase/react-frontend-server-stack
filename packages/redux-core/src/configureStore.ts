@@ -9,12 +9,10 @@ import {
     GenericStoreEnhancer,
 } from 'redux';
 import { Epic } from 'redux-observable';
-import { configureReducer } from './configureReducer';
-import { configureMiddleware } from './configureMiddleware';
+import configureReducer from './configureReducer';
+import configureMiddleware from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
 import { compose } from './lib/compose';
-import { Subject } from 'rxjs/Subject';
-
 
 export interface Options {
     initialState: any;
@@ -32,7 +30,7 @@ export interface IStore<T> extends Store<T> {
     epic$?: any;
 }
 
-export function configureStore<T>(options: Options): IStore<T> {
+function configureStore<T>(options: Options): IStore<T> {
     const {
         initialState,
         platformDeps = {},
@@ -65,7 +63,7 @@ export function configureStore<T>(options: Options): IStore<T> {
     if (moduleExist) {
         // Webpack for some reason needs accept with the explicit path.
         System.import('./configureReducer').then(reducerModule => {
-            const configureReducer = reducerModule.default;
+            const configureReducer = reducerModule.default1;
 
             store.replaceReducer(configureReducer(platformReducers, initialState));
         });
@@ -74,4 +72,4 @@ export function configureStore<T>(options: Options): IStore<T> {
 
 };
 
-
+export default configureStore;

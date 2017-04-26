@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('cdm-webpack-node-externals');
 var Visualizer = require("webpack-visualizer-plugin");
 var libPath = require('../../src/webpack-util');
 
@@ -50,6 +50,8 @@ var webpack_opts = {
     // assume a corresponding global variable exists and use that instead.
     // this is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: [nodeExternals({ modulesDir: "../../node_modules" })]
+    externals: [nodeExternals({ modulesDir: "../../node_modules" }), 
+    { "@redux-bootstrap/core": "@redux-bootstrap/core"},
+    { module: module }]
 };
 module.exports = webpack_opts;

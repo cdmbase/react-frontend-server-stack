@@ -1,7 +1,7 @@
-/*import { TextProps } from './Text';
+import { TextProps } from './Text';
 import * as React from 'react';
 import Text from './Text';
-import { defineMessages, injectIntl, IntlShape, FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl, InjectedIntl, IntlShape, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
     loadingText: {
@@ -15,7 +15,7 @@ const messages = defineMessages({
 });
 
 type LoadingProps = TextProps & {
-    intl: IntlShape,
+    intl: InjectedIntl,
 };
 
 type LoadingState = {
@@ -26,6 +26,11 @@ class Loading extends React.Component<LoadingProps, LoadingState> {
     state: LoadingState = {
         currentText: null,
     };
+
+    private timer: any;
+    private longTimer: any;
+    props: LoadingProps;
+
 
     componentDidMount() {
         // www.nngroup.com/articles/response-times-3-important-limits
@@ -48,9 +53,7 @@ class Loading extends React.Component<LoadingProps, LoadingState> {
         clearTimeout(this.longTimer);
     }
 
-    timer: number;
-    longTimer: number;
-    props: LoadingProps;
+
 
     render() {
         const { currentText } = this.state;
@@ -65,4 +68,4 @@ class Loading extends React.Component<LoadingProps, LoadingState> {
     }
 }
 
-export default injectIntl(Loading);*/
+export default injectIntl(Loading);

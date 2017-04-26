@@ -31,7 +31,7 @@ export interface typographyProps {
   lineHeight: number,
 };
 
-export const typography = (
+const typography = (
   {
     fontSize,
     fontSizeScale,
@@ -52,3 +52,4 @@ export const typography = (
   rhythm: (ratio: number) => lineHeight * ratio,
 });
 
+export default typography;

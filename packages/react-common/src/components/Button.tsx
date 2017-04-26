@@ -15,8 +15,8 @@ export type ButtonProps = ColorProps & TextProps & {
   textStyle?: (theme: Theme, props: TextProps) => Object,
 };
 
-export interface ButtonContext {
-  Button: () => React.ReactElement<ButtonProps>,
+export type ButtonContext = {
+  Button: () => JSX.Element,
   theme: Theme,
 };
 

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 // Test vertical rhythm visually. Inspired by basehold.it
 
-type ToggleBaselineProps = {
+export type ToggleBaselineProps = {
   baselineShown: boolean,
   toggleBaseline: typeof toggleBaseline,
 };

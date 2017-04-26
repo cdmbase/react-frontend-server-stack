@@ -15,20 +15,20 @@ import { isReactNative } from '@redux-bootstrap/core';
 
 export type BoxProps = React.CSSProperties & {
   // sitr.us/2017/01/03/flow-cookbook-react.html
-  as?: () => React.ReactElement<BoxProps>;
+  as?: (props: any) => JSX.Element;
   // Low level deliberately not typed.
   style?: (theme: Theme, style: Object) => Object;
   // Maybe rhythm props.
   // margin?: number | string;
-  // marginHorizontal?: number | string,
-  // marginVertical?: number | string,
+  marginHorizontal?: number | string,
+  marginVertical?: number | string,
   // marginBottom?: number | string,
   // marginLeft?: number | string,
   // marginRight?: number | string,
   // marginTop?: number | string,
   // padding?: number | string,
-  // paddingHorizontal?: number | string,
-  // paddingVertical?: number | string,
+  paddingHorizontal?: number | string,
+  paddingVertical?: number | string,
   // paddingBottom?: number | string,
   // paddingLeft?: number | string,
   // paddingRight?: number | string,
@@ -89,7 +89,7 @@ export type BoxProps = React.CSSProperties & {
 };
 
 export type BoxContext = {
-  View: () => React.ReactElement<BoxProps>,
+  View: (props: any) => JSX.Element,
   renderer: any, // TODO: Type it.
   theme: Theme,
 };

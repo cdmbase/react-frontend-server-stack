@@ -1,7 +1,7 @@
 {
-  "name": "redux-bootstrap-example",
+  "name": "redux-fela-example",
   "version": "0.0.1",
-  "description": "redux-bootstrap example",
+  "description": "redux-fela example",
   "main": "src/index.tsx",
   "scripts": {
     "jest": "./node_modules/.bin/jest",

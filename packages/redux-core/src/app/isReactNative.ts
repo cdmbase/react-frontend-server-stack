@@ -1,3 +1,5 @@
-export const isReactNative = typeof navigator === 'object' &&
+const isReactNative = typeof navigator === 'object' &&
     navigator.product === 'ReactNative';
+
+export default isReactNative;
 

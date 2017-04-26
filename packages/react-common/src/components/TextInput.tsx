@@ -14,7 +14,7 @@ export type TextInputProps = TextProps & {
 };
 
 interface TextInputContext {
-  TextInput: () => React.ReactElement<TextInputProps>,
+  TextInput: () => JSX.Element,
   theme: Theme,
 };
 

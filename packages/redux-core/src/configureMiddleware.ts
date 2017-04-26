@@ -14,7 +14,7 @@ const injectMiddleware = deps =>
                 );
 
 
-export const configureMiddleware = (
+const configureMiddleware = (
     initialState: any,
     platformDeps: any,
     platformMiddleware: any,
@@ -40,6 +40,8 @@ export const configureMiddleware = (
 
     return middleware;
 };
+
+export default configureMiddleware;
 
 
 

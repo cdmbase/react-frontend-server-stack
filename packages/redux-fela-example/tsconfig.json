@@ -1,0 +1,28 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "rootDirs": [
+            "./src",
+            "./tests"
+        ],
+        "jsx": "react",
+        "outDir": "./dist",
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": false,
+        "sourceMap": true,
+        "typeRoots": [
+            "../../node_modules/@types"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "lib",
+        "dist",
+        "webpack.config.js",
+        "webpack.config.ts"
+    ]
+}

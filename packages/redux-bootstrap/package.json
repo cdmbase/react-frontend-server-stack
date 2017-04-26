@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/remojansen/redux-bootstrap#readme",
   "dependencies": {
-    "@redux-bootstrap/core": "*"
+    "@redux-bootstrap/core": "^0.0.1"
   },
   "peerDependencies": {
     "history": "^3.2.1",
@@ -78,6 +78,7 @@
     "apollo-client": "^1.0.0-rc.6",
     "awesome-typescript-loader": "^3.1.2",
     "browserify": "^14.0.0",
+    "cdm-webpack-node-externals": "^1.5.6",
     "envify": "^4.0.0",
     "html5-history-api": "^4.2.7",
     "invariant": "^2.2.2",
@@ -104,7 +105,6 @@
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
-    "webpack-node-externals": "^1.5.4",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "browserify": {

@@ -23,7 +23,7 @@ export type TextProps = BoxProps & {
 };
 
 type TextContext = {
-  Text: () => React.ReactElement<TextProps>,
+  Text: () => JSX.Element,
   theme: Theme,
 };
 

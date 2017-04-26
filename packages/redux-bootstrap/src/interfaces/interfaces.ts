@@ -24,7 +24,8 @@ namespace interfaces {
         render?: Function;
         initialState?: any;
         container?: string;
-        wrapperHook?: Function;
+        moduleExist?: boolean;
+        wrapperHook?: WrapperHook;
         routerProps?: RouterProps;
     }
 
@@ -50,6 +51,10 @@ namespace interfaces {
         onUpdate?: () => any;
     }
 
+    export interface WrapperHook  extends Function{
+        (): JSX.Element;
+    }
+
     export interface NodeModule {
         hot: {
             accept: (path: string, cb: () => void) => void;
@@ -57,7 +62,7 @@ namespace interfaces {
     }
 
     export interface DevToolsOptions {
-        serialize: {
+        serialize?: {
             immutable: any
         };
     }

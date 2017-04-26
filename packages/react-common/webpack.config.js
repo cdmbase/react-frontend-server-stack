@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('cdm-webpack-node-externals');
 var Visualizer = require("webpack-visualizer-plugin");
 var libPath = require('../../src/webpack-util');
 
