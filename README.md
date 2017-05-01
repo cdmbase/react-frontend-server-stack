@@ -139,8 +139,8 @@ returned by the `bootstrap` function provides access to these.
 
 ```ts
 interface BootstrapResult {
-    store: Redux.Store,
-    history: ReactRouterRedux.ReactRouterReduxHistory,
+    store: Redux.Store<any>,
+    history: History.History, // history for react-router-redux 4.0
     output: any, // value returned by render()
     root: JSX.Element
 }
@@ -161,27 +161,15 @@ if (module.hot) {
 }
 ```
 
-## TypeScript Support
-The NPM package includes type definitions. TypeScript 2.0 or higher and
-the following `tsconfig.json` configuration is required.
+## TypeScript inside
+All packages were written with TypeScript 2.0 or higher. So you can enjoy the best development experience and build scalable apps.
 
-```
-{
-    "compilerOptions": {
-        "lib": ["es6", "dom"],
-        "types": ["node"],
-        "jsx": "react"
-    }
-}
-```
-
-TypeScript is recommended if you want to enjoy the best development experience.
 
 ## Development
 
 If you want to develop gitstack locally you must follow the following instructions:
 
-* Fork or Clone this repository
+* Fork or Clone this [repository](https://github.com/cdmbase/react-frontend-server-stack.git)
 
 * Install the Redux Stack project in your computer
 
