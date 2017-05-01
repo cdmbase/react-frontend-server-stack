@@ -63,7 +63,7 @@ $ npm install --global lerna
 
 Download packages from [repository](https://github.com/cdmbase/react-frontend-server-stack.git).
 
-Create your project in 'packages' directory. In 'package.json' file you need to set dependency
+Create your new project in 'packages' directory. In 'package.json' file you need to set dependency
 
 ```
 "dependencies": {
@@ -72,10 +72,13 @@ Create your project in 'packages' directory. In 'package.json' file you need to 
     ```
 ```
 
-Then you should go to main directory and bind your project with '@redux-bootstrap/bootstrap'. 
+Then you should go to main directory and bind your new project with '@redux-bootstrap/bootstrap'. 
 
 ```
 $ learna bootstrap --sort
+```
+Install dependencies
+```
 $ npm install
 $ npm run install
 ```
