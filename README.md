@@ -56,46 +56,37 @@ This idea is based on the `bootstrap` functions built into other modern JS frame
 
 ## How can I use it?
 
-Install it via NPM:
-
+First you should install [learna](https://www.npmjs.com/package/lerna).
 ```
-$ npm install --save redux-bootstrap
-```
-```
-$ npm install --save-dev @types/history@2.0.45 @types/react @types/react-dom @types/react-redux @types/react-router@3.0.0 @types/react-router-redux@4.0.39 @types/redux-immutable
+$ npm install --global lerna 
 ```
 
-The preceding command will install `redux-bootstrap` and the following dependencies:
+Download packages from [repository](https://github.com/cdmbase/react-frontend-server-stack.git).
 
-```json
+Create your project in 'packages' directory. In 'package.json' file you need to set dependency
+
+```
 "dependencies": {
-    "history": "^3.2.1",
-    "immutable": "^3.7.6",
-    "react": "^15.0.2",
-    "react-dom": "^15.1.0",
-    "react-redux": "^4.4.4",
-    "react-router": "^3.0.0",
-    "react-router-redux": "^4.0.2",
-    "redux": "^3.5.2",
-    "redux-immutable": "^3.0.6",
-    "reselect": "^2.5.1"
-}
+    ```
+    "@redux-bootstrap/bootstrap": "^0.0.1",
+    ```
 ```
- 
-Then use the `bootstrap` function in your application’s entry point.
 
-> Note: The following example uses two pieces of Redux middleware: `redux-thunk` and `redux-logger`.
-These packages are optional but if you are going to use them you will need to install them first:
->
-> ```ts
-> $ npm install redux-thunk redux-logger --save
-> ```
+Then you should go to main directory and bind your project with '@redux-bootstrap/bootstrap'. 
+
+```
+$ learna bootstrap --sort
+$ npm install
+$ npm run install
+```
+
+Then use the `bootstrap` function in your application’s entry point.
 
 All you need to do is import your routes file, your reducers and any additional middleware 
 and pass them to the `bootstrap` function as configuration:
 
 ```ts
-import { bootstrap, interfaces } from "redux-bootstrap";
+import { bootstrap, interfaces } from "@redux-bootstrap/bootstrap";
 import routes from "./routes";
 import usersReducer from "./reducers/usersReducer";
 import reposReducer from "./reducers/reposReducer";
@@ -108,7 +99,7 @@ bootstrap({
     createHistory: createBrowserHistory,  // optional
     historyOptions: {},                   // optional
     initialState: {},                     // optional
-    middlewares: [thunk, createLogger()], // optional    
+    middlewares: [thunk, createLogger()], // optional
     render: ReactDOM.render,              // optional
     routerProps: interfaces.RouterProps   // optional
     reducers: {
@@ -119,7 +110,7 @@ bootstrap({
 });
 ```
 
-That’s it – routing, Immutable, and DevTools are ready and you can start working on your app!
+That’s it – routing, and DevTools are ready and you can start working on your app!
 
 ## Where can I find an example?
 If you are looking for a sample application, you can refer to the [packages](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages) directory. There you can find examples:
