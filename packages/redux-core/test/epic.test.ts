@@ -1,9 +1,10 @@
 import {Subject} from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable');
+import { Observable } from 'rxjs/Observable';
 import { ActionsObservable } from 'redux-observable';
 import 'rxjs/operator/map';
 import 'rxjs/operator/toArray';
-import { configureStore, Options as StoreOptions } from '../src/configureStore';
+import configureStore from '../src/configureStore';
+import { Options as StoreOptions } from '../src/configureStore';
 import { injectAsyncEpic } from '../src/configureEpics';
 
 describe('combineEpics', () => {
@@ -17,7 +18,7 @@ describe('combineEpics', () => {
         const epic2 = (actions, store) =>
             actions.ofType('ACTION2').map(action => ({ type: 'DELEGATED2', action, store }));
         const subject = new Subject();
-        
+
         injectAsyncEpic(store)('first', epic1);
 
         const actions = new ActionsObservable(subject);
@@ -35,5 +36,5 @@ describe('combineEpics', () => {
         ]);
 
 
-    })
-})
+    });
+});

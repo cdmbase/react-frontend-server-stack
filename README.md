@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/redux-bootstrap/redux-bootstrap.github.io/master/img/profile.png)
 
-# redux-bootstrap
+# Full Stack Packages for Front-end Server
 
 [![Join the chat at https://gitter.im/redux-bootstrap/redux-bootstrap](https://badges.gitter.im/redux-bootstrap/redux-bootstrap.svg)](https://gitter.im/redux-bootstrap/redux-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/redux-bootstrap/redux-bootstrap.svg?branch=master)](https://travis-ci.org/redux-bootstrap/redux-bootstrap)
@@ -14,11 +14,18 @@
 [![NPM](https://nodei.co/npm/redux-bootstrap.png?downloads=true&downloadRank=true)](https://nodei.co/npm/redux-bootstrap/)
 [![NPM](https://nodei.co/npm-dl/redux-bootstrap.png?months=9&height=3)](https://nodei.co/npm/redux-bootstrap/)
 
+Here you can find enhanced redux-bootstrap with [TypeScript](https://www.typescriptlang.org/index.html) and [Rx](http://reactivex.io/) under hood.
+
 **A `bootstrap()` function for initializing [Redux](https://github.com/reactjs/redux) applications.**
 
 This module works by exporting a `bootstrap` function you can call in your project. It does not 
 generate files for you – it is **not a project template or project scaffolding tool**. It is not 
 related to the [Bootstrap](http://getbootstrap.com/) responsive front-end framework.
+
+## Note
+
+This is still in work-in-progress.
+
 
 ## Why do I need this?
 This library handles most of the common application initialization/bootstrapping that takes 
@@ -28,9 +35,10 @@ When you create a new Redux project you usually need to take care of a few thing
 
 - Install dependencies.
 - Integrate [React Router](https://github.com/reactjs/react-router) with Redux.
+- Integrate [Rx with redux-observable](https://github.com/redux-observable/redux-observable).
 - Create a Root reducer.
 - Configure [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension).
-- Integrate [Immutable](https://facebook.github.io/immutable-js/) with Redux.
+- Integrate [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant) with Redux.
 - Apply middleware.
 - Combine reducers into a root reducer.
 - Create the store.
@@ -39,7 +47,8 @@ When you create a new Redux project you usually need to take care of a few thing
 - Set the routes, history and store in the Root component.
 - Render the Root component.
 
-The redux-bootstrap package handles all this stuff for you! 
+
+The redux-bootstrap package handles all this stuff for you!
 
 This idea is based on the `bootstrap` functions built into other modern JS frameworks such as
 [Angular 2.0](https://angular.io/docs/ts/latest/api/platform/browser/bootstrap-function.html) and
@@ -47,46 +56,40 @@ This idea is based on the `bootstrap` functions built into other modern JS frame
 
 ## How can I use it?
 
-Install it via NPM:
-
+First you should install [learna](https://www.npmjs.com/package/lerna).
 ```
-$ npm install --save redux-bootstrap
-```
-```
-$ npm install --save-dev @types/history@2.0.45 @types/react @types/react-dom @types/react-redux @types/react-router@3.0.0 @types/react-router-redux@4.0.39 @types/redux-immutable
+$ npm install --global lerna 
 ```
 
-The preceding command will install `redux-bootstrap` and the following dependencies:
+Download packages from [repository](https://github.com/cdmbase/react-frontend-server-stack.git).
 
-```json
+Create your new project in 'packages' directory. In 'package.json' file you need to set dependency
+
+```
 "dependencies": {
-    "history": "^3.2.1",
-    "immutable": "^3.7.6",
-    "react": "^15.0.2",
-    "react-dom": "^15.1.0",
-    "react-redux": "^4.4.4",
-    "react-router": "^3.0.0",
-    "react-router-redux": "^4.0.2",
-    "redux": "^3.5.2",
-    "redux-immutable": "^3.0.6",
-    "reselect": "^2.5.1"
-}
+    ```
+    "@redux-bootstrap/bootstrap": "^0.0.1",
+    ```
 ```
- 
-Then use the `bootstrap` function in your application’s entry point.
 
-> Note: The following example uses two pieces of Redux middleware: `redux-thunk` and `redux-logger`.
-These packages are optional but if you are going to use them you will need to install them first:
->
-> ```ts
-> $ npm install redux-thunk redux-logger --save
-> ```
+Then you should go to main directory and bind your new project with '@redux-bootstrap/bootstrap'. 
+
+```
+$ learna bootstrap --sort
+```
+Install dependencies
+```
+$ npm install
+$ npm run install
+```
+
+Then use the `bootstrap` function in your application’s entry point.
 
 All you need to do is import your routes file, your reducers and any additional middleware 
 and pass them to the `bootstrap` function as configuration:
 
 ```ts
-import { bootstrap, interfaces } from "redux-bootstrap";
+import { bootstrap, interfaces } from "@redux-bootstrap/bootstrap";
 import routes from "./routes";
 import usersReducer from "./reducers/usersReducer";
 import reposReducer from "./reducers/reposReducer";
@@ -99,7 +102,7 @@ bootstrap({
     createHistory: createBrowserHistory,  // optional
     historyOptions: {},                   // optional
     initialState: {},                     // optional
-    middlewares: [thunk, createLogger()], // optional    
+    middlewares: [thunk, createLogger()], // optional
     render: ReactDOM.render,              // optional
     routerProps: interfaces.RouterProps   // optional
     reducers: {
@@ -110,21 +113,22 @@ bootstrap({
 });
 ```
 
-That’s it – routing, Immutable, and DevTools are ready and you can start working on your app!
+That’s it – routing, and DevTools are ready and you can start working on your app!
 
 ## Where can I find an example?
-If you are looking for a sample application, you can refer to the 
-[redux-bootstrap-example](https://github.com/redux-bootstrap/redux-bootstrap-example) repository.
+If you are looking for a sample application, you can refer to the [packages](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages) directory. There you can find examples:
 
-## Using `combineReducers`
-Redux Bootstrap uses [Immutable.js](https://facebook.github.io/immutable-js/).
-The `combineReducers` function from Redux doesn’t work with Immutable objects in
-the state, so you should use [`redux-immutable`](https://github.com/gajus/redux-immutable)’s
-`combineReducers` function to solve this problem:
+[redux-bootstrap-example](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages/redux-bootstrap-example) directory.
 
-```ts
-import { combineReducers } from "redux-immutable";
-```
+[redux-fela-example](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages/redux-fela-example) directory.
+
+Also you can see [experimental](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/experimental) examples:
+
+
+## Redux immutable state
+Redux Bootstrap uses [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant)  automaticaly in development mode.
+Therefore you will get an error message when you try to mutate your state either inside a dispatch or between dispatches. You don't need to use [Immutable.js](https://facebook.github.io/immutable-js/) and [`redux-immutable`](https://github.com/gajus/redux-immutable).
+
 
 ## Accessing the Store, History & Root Component
 Sometimes you need to access the store, synched history or root component.  The result object 
@@ -132,8 +136,8 @@ returned by the `bootstrap` function provides access to these.
 
 ```ts
 interface BootstrapResult {
-    store: Redux.Store,
-    history: ReactRouterRedux.ReactRouterReduxHistory,
+    store: Redux.Store<any>,
+    history: History.History, // history for react-router-redux 4.0
     output: any, // value returned by render()
     root: JSX.Element
 }
@@ -154,37 +158,15 @@ if (module.hot) {
 }
 ```
 
-## TypeScript Support
-The NPM package includes type definitions. TypeScript 2.0 or higher and
-the following `tsconfig.json` configuration is required.
+## TypeScript inside
+All packages were written with TypeScript 2.0 or higher. So you can enjoy the best development experience and build scalable apps.
 
-```
-{
-    "compilerOptions": {
-        "lib": ["es6", "dom"],
-        "types": ["node"],
-        "jsx": "react"
-    }
-}
-```
-
-TypeScript is recommended if you want to enjoy the best development experience.
-
-
-#################################################
-
-# Full Stack Packages for Front-end Server
-
-
-## Note
-
-This is still in work-in-progress.
 
 ## Development
 
 If you want to develop gitstack locally you must follow the following instructions:
 
-* Fork or Clone this repository
+* Fork or Clone this [repository](https://github.com/cdmbase/react-frontend-server-stack.git)
 
 * Install the Redux Stack project in your computer
 

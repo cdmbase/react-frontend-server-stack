@@ -8,7 +8,7 @@ import "@accounts/react-material-ui";
 import thunk from "redux-thunk";
 import { bootstrap } from "@redux-bootstrap/apollo-bootstrap";
 const { createLogger } = require("redux-logger");
-const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
+// const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 import { throttle } from "lodash";
 import routes from "./config/routes";
 import reposReducer from "./reducers/repos_reducer";
@@ -22,7 +22,7 @@ let middleware: any[] = [thunk];
 
 if (process.env.NODE_ENV !== "production") {
     middleware.push(createLogger({level: "log"}));
-    middleware.push(immutableStateInvariant());
+    //middleware.push(immutableStateInvariant());
 }
 
 let preloadedState: any = null;

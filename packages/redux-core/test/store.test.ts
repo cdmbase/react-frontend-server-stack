@@ -1,13 +1,16 @@
 /**
  * Test store addons
  */
-import configureStore from './src/configureStore';
+import 'jest';
+import configureStore from '../src/configureStore';
+import { Options as StoreOptions } from '../src/configureStore';
 
 describe('configureStore', () => {
     let store;
+    const storeOptions: StoreOptions = { initialState: {} };
 
     beforeEach(() => {
-        store = configureStore({});
+        store = configureStore(storeOptions);
     });
 
     describe('asyncReducers', () => {
@@ -15,5 +18,4 @@ describe('configureStore', () => {
             expect(typeof store.asyncReducers).toEqual('object');
         });
     });
-    
-})
+});

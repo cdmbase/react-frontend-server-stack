@@ -11,6 +11,7 @@ import * as Redux from "redux";
 import * as History from "history";
 import { configureStore, Options as StoreOptions } from "@redux-bootstrap/core";
 import { ApolloClient, createNetworkInterface } from "react-apollo";
+const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 
 // const initialRouterReducerState = Immutable.fromJS({
 //     locationBeforeTransitions: null
@@ -51,9 +52,6 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     let reducers: any = options.reducers;
     reducers.apollo = client.reducer();
 
-    console.log("******reducers******");
-    console.log(reducers);
-
     // optional
     let container = options.container || "root";
     // const createHistory = options.createHistory || createBrowserHistory;
@@ -78,7 +76,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     //     }
     // };
     const storeOptions: StoreOptions = {
-        platformMiddleware: [...middlewares, client.middleware()],
+        platformMiddleware: [...middlewares, immutableStateInvariant, client.middleware()],
         platformReducers: reducers,
         initialState,
         // platformStoreEnhancers: [devToolsOptions]
