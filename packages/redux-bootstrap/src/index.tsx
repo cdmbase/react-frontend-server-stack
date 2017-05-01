@@ -1,33 +1,26 @@
 import { render as renderToDOM } from 'react-dom';
 import { useRouterHistory } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-// import { LOCATION_CHANGE, syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-// import { combineReducers } from "redux-immutable";
+import { LOCATION_CHANGE, syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { createSelector } from 'reselect';
-// import * as Immutable from "immutable";
 import getRoot from './containers/root';
 import interfaces from './interfaces/interfaces';
 import * as Redux from 'redux';
 import * as History from 'history';
-import { configureStore, Options as StoreOptions } from '@redux-bootstrap/core';
+import { configureStore, StoreOptions } from '@redux-bootstrap/core';
+const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 
-// const initialRouterReducerState = Immutable.fromJS({
-//     locationBeforeTransitions: null
-// });
-// const initialRouterReducerState = {
-//     locationBeforeTransitions: null
-// };
 
-// const routerReducer = (state = initialRouterReducerState, action: any) => {
-//     if (action.type === LOCATION_CHANGE) {
-//         return { ...state, locationBeforeTransitions: action.payload }
-//     }
+const initialRouterReducerState = {
+    locationBeforeTransitions: null
+};
 
-//     // state.merge({
-//     //     locationBeforeTransitions: action.payload
-//     // });
-// return state;
-// };
+const routerReducer = (state = initialRouterReducerState, action: any) => {
+    if (action.type === LOCATION_CHANGE) {
+        return { ...state, locationBeforeTransitions: action.payload }
+    }
+    return state;
+};
 
 const getRouting = (state: any) => state["routing"];
 
@@ -44,44 +37,43 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
 
     // optional
     let container = options.container || "root";
-    // const createHistory = options.createHistory || createBrowserHistory;
-    // const historyOptions = options.historyOptions || {};
+    const createHistory = options.createHistory || createBrowserHistory;
+    const historyOptions = options.historyOptions || {};
     let initialState = options.initialState || {};
-    // let immutableInitialState = Immutable.fromJS(initialState);
     let middlewares = options.middlewares || [];
     const render = options.render || renderToDOM;
 
     // Define the root reducer
-    // reducers.routing = routerReducer;
-    // let rootReducer = combineReducers(reducers);
+    reducers.routing = routerReducer;
 
     // Configure store
-    // const routerHistory = useRouterHistory<History.HistoryOptions, History.History>(createHistory)(historyOptions);
-    // let routerMddlwr: Redux.Middleware = routerMiddleware(routerHistory);
+    const routerHistory = useRouterHistory<History.HistoryOptions, History.History>(createHistory)(historyOptions);
+    let routerMddlwr: Redux.Middleware = routerMiddleware(routerHistory);
 
     // More info at https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md#windowdevtoolsextensionconfig
-    // let devToolsOptions: interfaces.DevToolsOptions = {
-    //     serialize: {
-    //         immutable: Immutable
-    //     }
-    // };
+    let devToolsOptions: interfaces.DevToolsOptions = {
+    };
+    let devTools: interfaces.DevTools = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    const composeEnhancers = devTools ? devTools(devToolsOptions) : Redux.compose;
+
     const storeOptions: StoreOptions = {
-        platformMiddleware: [...middlewares],
+        platformMiddleware: [...middlewares, immutableStateInvariant],
         platformReducers: reducers,
+        platformDeps: options.platformDeps,
         initialState,
-        // platformStoreEnhancers: [devToolsOptions]
+        moduleExist: options.moduleExist,
+        // platformStoreEnhancers: [composeEnhancers]
     };
     const store = configureStore(storeOptions);
     // const store = configureStore([...middlewares, routerMddlwr], rootReducer, immutableInitialState, devToolsOptions);
 
     // Create an enhanced history that syncs navigation events with the store
-    // const history = syncHistoryWithStore(routerHistory, store, {
-    //     selectLocationState: createSelector(getRouting, (routing: any) => routing)
-    // });
+    const history = syncHistoryWithStore(routerHistory, store, {
+        selectLocationState: createSelector(getRouting, (routing: any) => routing)
+    });
 
     // root component
-    // let root = getRoot(store, history, routes, options.routerProps);
-        let root = getRoot(store, routes, options.routerProps);
+    let root = getRoot(store, history, routes, options.routerProps, options.wrapperHook);
 
 
     // Render Root coponent
@@ -96,7 +88,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
 
     return {
         store,
-        // history,
+        history,
         output,
         root
     };

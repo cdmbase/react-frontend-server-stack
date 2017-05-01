@@ -1,0 +1,98 @@
+{
+  "name": "@redux-bootstrap/react-fela",
+  "version": "0.0.1",
+  "description": "Bootstrapping for Redux applications",
+  "main": "lib/index.js",
+  "jsnext:main": "es/index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "jest": "./node_modules/.bin/jest",
+    "test": "jest",
+    "test:debug": "npm test -- --runInBand",
+    "test:watch": "npm test -- --watch",
+    "prepublish": "npm run build",
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf lib dts es",
+    "build:lib": "webpack",
+    "build:lib:watch": "npm run build:lib -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remojansen/redux-bootstrap.git"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "bootstrap"
+  ],
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "<rootDir>/../../node_modules/ts-jest/coverageprocessor.js",
+    "testEnvironment": "jsdom",
+    "testRegex": ".*\\.test\\.tsx?$",
+    "testURL": "http://example.com",
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "js",
+      "json"
+    ]
+  },
+  "author": "CDMBase LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remojansen/redux-bootstrap/issues"
+  },
+  "homepage": "https://github.com/remojansen/redux-bootstrap#readme",
+  "dependencies": {
+    "@redux-bootstrap/core": "*"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.4",
+    "react-redux": "^5.0.2",
+    "redux": "^3.5.2",
+    "react-intl": "^2.2.3",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "fela": "^4.3.2",
+    "fela-plugin-placeholder-prefixer": "^4.3.2",
+    "fela-plugin-validator": "^4.3.2"
+  },
+  "optionalDependencies": {
+    "fela-native": "^4.3.2",
+    "fela-preset-web": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.2",
+    "@types/jsdom": "^2.0.29",
+    "@types/node": "^7.0.12",
+    "@types/react": "^15.0.22",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.38",
+    "apollo-client": "^1.0.0-rc.6",
+    "awesome-typescript-loader": "^3.1.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "ts-jest": "^19.0.10",
+    "ts-loader": "^2.0.3",
+    "tsify": "^2.0.8",
+    "tslint-loader": "^3.4.3",
+    "tslint-react": "^2.5.0",
+    "warning": "^3.0.0",
+    "webpack": "^2.3.3",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "browserify": {
+    "transform": [
+      "envify"
+    ]
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.0.0"
+  }
+}

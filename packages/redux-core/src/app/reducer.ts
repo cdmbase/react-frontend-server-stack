@@ -35,6 +35,6 @@ const reducer = (state: Store.AppState = initialState, action: Store.Action): St
             return state;
 
     }
-}
+};
 
 export default reducer;

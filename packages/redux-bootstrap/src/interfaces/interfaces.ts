@@ -1,5 +1,6 @@
-// import * as History from 'history';
+import * as History from 'history';
 import * as Redux from 'redux';
+import { Store } from '@redux-bootstrap/core';
 
 namespace interfaces {
 
@@ -18,19 +19,21 @@ namespace interfaces {
     export interface BoostrapOptions {
         routes: JSX.Element;
         reducers: ReducersOption;
-        // createHistory?: History.CreateHistory<History.HistoryOptions, History.History>;
-        // historyOptions?: History.HistoryOptions;
+        createHistory?: History.CreateHistory<History.HistoryOptions, History.History>;
+        historyOptions?: History.HistoryOptions;
         middlewares?: Redux.Middleware[];
+        platformDeps?: Store.Deps,
         render?: Function;
         initialState?: any;
         container?: string;
-        wrapperHook?: Function;
+        moduleExist?: boolean;
+        wrapperHook?: WrapperHook;
         routerProps?: RouterProps;
     }
 
     export interface BootstrapResult {
         store: Redux.Store<any>;
-        // history: History.History;
+        history: History.History;
         output: any;
         root: JSX.Element;
     }
@@ -41,13 +44,17 @@ namespace interfaces {
 
     export interface RootComponentProps {
         store: Redux.Store<any>;
-        // history: History.History;
+        history: History.History;
         routes: JSX.Element;
     }
 
     export interface RouterProps {
         onError?: (error: any) => any;
         onUpdate?: () => any;
+    }
+
+    export interface WrapperHook extends Function {
+        (): JSX.Element;
     }
 
     export interface NodeModule {
@@ -57,7 +64,7 @@ namespace interfaces {
     }
 
     export interface DevToolsOptions {
-        serialize: {
+        serialize?: {
             immutable: any
         };
     }

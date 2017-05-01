@@ -1,6 +1,6 @@
 dist
 lib
-
+backup
 # Logs
 logs
 *.log
@@ -31,7 +31,7 @@ build/Release
 
 # Dependency directory
 node_modules
-typings
+
 
 # Optional npm cache directory
 .npm
@@ -42,4 +42,6 @@ typings
 .lib
 
 .idea
+.vscode
 tmp
+.DS_Store

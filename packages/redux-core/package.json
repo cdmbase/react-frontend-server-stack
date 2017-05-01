@@ -4,31 +4,47 @@
   "description": "git core for higher packages to depend on",
   "main": "lib/index.js",
   "scripts": {
+    "jest": "./node_modules/.bin/jest",
+    "test": "jest",
+    "test:debug": "npm test -- --runInBand",
+    "test:watch": "npm test -- --watch",
     "prepublish": "npm run build",
     "build": "npm run build:clean && npm run build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "webpack",
-    "build:lib:watch": "npm run build:lib -- --watch",
-    "test": "mocha ./dist/index.test.js"
+    "build:lib:watch": "npm run build:lib -- --watch"
   },
-  "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
-  "license": "ISC",
+  "author": "CDMbase LLC (https://github.com/cdmbase)",
+  "license": "MIT",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testResultsProcessor": "<rootDir>/../../node_modules/ts-jest/coverageprocessor.js",
+    "testEnvironment": "jsdom",
+    "testRegex": ".*\\.test\\.tsx?$",
+    "testURL": "http://example.com",
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "js",
+      "json"
+    ]
+  },
   "devDependencies": {
     "@types/minimist": "^1.2.0",
-    "@types/mocha": "^2.2.39",
-    "@types/node": "^7.0.5",
-    "@types/redux-logger": "^2.10.0",
+    "@types/node": "^7.0.12",
+    "@types/redux-logger": "^3.0.0",
     "@types/redux-persist": "^4.3.1",
     "@types/semver": "^5.3.30",
-    "@types/sinon": "^1.16.34",
-    "mocha": "^3.2.0",
+    "@types/sinon": "^1.16.36",
+    "cdm-webpack-node-externals": "^1.5.6",
     "rimraf": "^2.6.1",
     "ts-loader": "^2.0.3",
-    "webpack": "^2.3.1",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-node-externals": "^1.5.4"
+    "webpack": "^2.3.3",
+    "webpack-dev-middleware": "^1.10.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "ramda": "^0.23.0",
     "raven-js": "^3.0.3",
     "redux": "^3.6.0",

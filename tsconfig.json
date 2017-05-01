@@ -19,10 +19,10 @@
       "@types/node"
     ]
   },
-    "exclude": [
-        "node_modules",
-        "lib",
-        "dist",
-        "webpack.config.js"
-    ]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "dist",
+    "webpack.config.js"
+  ]
 }

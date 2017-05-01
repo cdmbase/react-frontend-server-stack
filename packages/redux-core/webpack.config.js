@@ -1,16 +1,8 @@
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('cdm-webpack-node-externals');
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
-
-/* helper function to get into build directory */
-var libPath = function (name) {
-  if (undefined === name) {
-    return path.join('lib');
-  }
-
-  return path.join('lib', name);
-};
+var libPath = require('../../src/webpack-util');
 
 var webpack_opts = {
   entry: './src/index.ts',
@@ -44,15 +36,12 @@ var webpack_opts = {
   ],
   devtool: 'source-map',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.ts$/,
       loaders: 'ts-loader'
-    }, {
-      test: /\.json?$/,
-      loader: 'json'
-    },]
+    }]
   },
-externals: [nodeExternals(), {module: module}]
+  externals: [nodeExternals({ modulesDir: "../../node_modules" }), { module: module }]
 };
 
 module.exports = webpack_opts;
