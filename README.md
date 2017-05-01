@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/redux-bootstrap/redux-bootstrap.github.io/master/img/profile.png)
 
-# redux-bootstrap
+# Full Stack Packages for Front-end Server
 
 [![Join the chat at https://gitter.im/redux-bootstrap/redux-bootstrap](https://badges.gitter.im/redux-bootstrap/redux-bootstrap.svg)](https://gitter.im/redux-bootstrap/redux-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/redux-bootstrap/redux-bootstrap.svg?branch=master)](https://travis-ci.org/redux-bootstrap/redux-bootstrap)
@@ -13,6 +13,10 @@
 
 [![NPM](https://nodei.co/npm/redux-bootstrap.png?downloads=true&downloadRank=true)](https://nodei.co/npm/redux-bootstrap/)
 [![NPM](https://nodei.co/npm-dl/redux-bootstrap.png?months=9&height=3)](https://nodei.co/npm/redux-bootstrap/)
+
+## Note
+
+This is still in work-in-progress.
 
 **A `bootstrap()` function for initializing [Redux](https://github.com/reactjs/redux) applications.**
 
@@ -169,16 +173,6 @@ the following `tsconfig.json` configuration is required.
 ```
 
 TypeScript is recommended if you want to enjoy the best development experience.
-
-
-#################################################
-
-# Full Stack Packages for Front-end Server
-
-
-## Note
-
-This is still in work-in-progress.
 
 ## Development
 
