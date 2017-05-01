@@ -2,15 +2,12 @@
   "extends": "../../tsconfig",
   "compilerOptions": {
     "jsx": "react",
-    "rootDir": "./src",
+    "rootDirs":["./src", "./tests"],
     "outDir": "./lib",
     "typeRoots": [
       "../../node_modules/@types"
     ]
   },
-  "files": [
-    "typings/index.d.ts"
-  ],
   "exclude": [
     "node_modules",
     "dist",
