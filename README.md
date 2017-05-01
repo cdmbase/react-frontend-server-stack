@@ -117,10 +117,12 @@ bootstrap({
 That’s it – routing, Immutable, and DevTools are ready and you can start working on your app!
 
 ## Where can I find an example?
-If you are looking for a sample application, you can refer to the [packages](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages) directory. All examples are here.
+If you are looking for a sample application, you can refer to the [packages](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages) directory. There .you can find examples:
 
 [redux-bootstrap-example](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages/redux-bootstrap-example) directory.
+
 [redux-fela-example](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/packages/redux-fela-example) directory.
+
 
 
 ## Using `combineReducers`
