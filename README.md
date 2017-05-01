@@ -32,9 +32,10 @@ When you create a new Redux project you usually need to take care of a few thing
 
 - Install dependencies.
 - Integrate [React Router](https://github.com/reactjs/react-router) with Redux.
+- Integrate [Rx with redux-observable](https://github.com/redux-observable/redux-observable).
 - Create a Root reducer.
 - Configure [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension).
-- Integrate [Immutable](https://facebook.github.io/immutable-js/) with Redux.
+- Integrate [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant) with Redux.
 - Apply middleware.
 - Combine reducers into a root reducer.
 - Create the store.
@@ -42,6 +43,7 @@ When you create a new Redux project you usually need to take care of a few thing
 - Create the Root component (Provider, Router).
 - Set the routes, history and store in the Root component.
 - Render the Root component.
+
 
 The redux-bootstrap package handles all this stuff for you! 
 

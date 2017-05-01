@@ -5,7 +5,7 @@ const configureDeps = (initialState: Store.State, platformDeps: Store.Deps) => (
   ...platformDeps,
   getUid: () => platformDeps.uuid.v4(),
   now: () => Date.now(),
-//   validate,
+  // validate,
 });
 
 export default configureDeps;
