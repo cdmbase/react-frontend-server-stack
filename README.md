@@ -14,15 +14,18 @@
 [![NPM](https://nodei.co/npm/redux-bootstrap.png?downloads=true&downloadRank=true)](https://nodei.co/npm/redux-bootstrap/)
 [![NPM](https://nodei.co/npm-dl/redux-bootstrap.png?months=9&height=3)](https://nodei.co/npm/redux-bootstrap/)
 
-## Note
-
-This is still in work-in-progress.
+Here you can find enhanced redux-bootstrap with [TypeScript](https://www.typescriptlang.org/index.html) and [Rx](http://reactivex.io/) under hood.
 
 **A `bootstrap()` function for initializing [Redux](https://github.com/reactjs/redux) applications.**
 
 This module works by exporting a `bootstrap` function you can call in your project. It does not 
 generate files for you – it is **not a project template or project scaffolding tool**. It is not 
 related to the [Bootstrap](http://getbootstrap.com/) responsive front-end framework.
+
+## Note
+
+This is still in work-in-progress.
+
 
 ## Why do I need this?
 This library handles most of the common application initialization/bootstrapping that takes 
