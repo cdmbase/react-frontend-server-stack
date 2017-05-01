@@ -8,6 +8,7 @@ import interfaces from './interfaces/interfaces';
 import * as Redux from 'redux';
 import * as History from 'history';
 import { configureStore, StoreOptions } from '@redux-bootstrap/core';
+const { default: immutableStateInvariant } = require("redux-immutable-state-invariant");
 
 
 const initialRouterReducerState = {
@@ -56,7 +57,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     const composeEnhancers = devTools ? devTools(devToolsOptions) : Redux.compose;
 
     const storeOptions: StoreOptions = {
-        platformMiddleware: [...middlewares],
+        platformMiddleware: [...middlewares, immutableStateInvariant],
         platformReducers: reducers,
         platformDeps: options.platformDeps,
         initialState,

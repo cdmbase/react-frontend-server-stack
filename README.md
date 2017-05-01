@@ -45,7 +45,7 @@ When you create a new Redux project you usually need to take care of a few thing
 - Render the Root component.
 
 
-The redux-bootstrap package handles all this stuff for you! 
+The redux-bootstrap package handles all this stuff for you!
 
 This idea is based on the `bootstrap` functions built into other modern JS frameworks such as
 [Angular 2.0](https://angular.io/docs/ts/latest/api/platform/browser/bootstrap-function.html) and
@@ -128,15 +128,10 @@ If you are looking for a sample application, you can refer to the [packages](htt
 Also you can see [experimental](https://github.com/cdmbase/react-frontend-server-stack/tree/readme/experimental) examples:
 
 
-## Using `combineReducers`
-Redux Bootstrap uses [Immutable.js](https://facebook.github.io/immutable-js/).
-The `combineReducers` function from Redux doesn’t work with Immutable objects in
-the state, so you should use [`redux-immutable`](https://github.com/gajus/redux-immutable)’s
-`combineReducers` function to solve this problem:
+## Redux immutable state
+Redux Bootstrap uses [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant)  automaticaly in development mode.
+Therefore you will get an error message when you try to mutate your state either inside a dispatch or between dispatches. You don't need to use [Immutable.js](https://facebook.github.io/immutable-js/) and [`redux-immutable`](https://github.com/gajus/redux-immutable).
 
-```ts
-import { combineReducers } from "redux-immutable";
-```
 
 ## Accessing the Store, History & Root Component
 Sometimes you need to access the store, synched history or root component.  The result object 
