@@ -10,12 +10,12 @@ interface FluxStandardAction {
 // Core
 
     export interface Deps {
-        FBSDK: any;
-        getState: () => State;
-        getUid: () => string;
-        now: () => number;
+        FBSDK?: any;
+        getState?: () => State;
+        getUid?: () => string;
+        now?: () => number;
         uuid: { v4: Function };
-        validate: (json: Object) => any;
+        validate?: (json: Object) => any;
     };
 
 // Models

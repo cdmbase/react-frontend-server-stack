@@ -13,10 +13,11 @@ import configureReducer from './configureReducer';
 import configureMiddleware from './configureMiddleware';
 import { autoRehydrate } from 'redux-persist';
 import { compose } from './lib/compose';
+import { Store as StoreConfig } from './types';
 
 export interface Options {
     initialState: any;
-    platformDeps?: Object;
+    platformDeps?: StoreConfig.Deps;
     platformReducers?: ReducersMapObject;
     platformMiddleware?: Middleware[];
     platformStoreEnhancers?: [GenericStoreEnhancer];

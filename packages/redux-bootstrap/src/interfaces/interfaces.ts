@@ -1,5 +1,6 @@
 import * as History from 'history';
 import * as Redux from 'redux';
+import { Store } from '@redux-bootstrap/core';
 
 namespace interfaces {
 
@@ -21,6 +22,7 @@ namespace interfaces {
         createHistory?: History.CreateHistory<History.HistoryOptions, History.History>;
         historyOptions?: History.HistoryOptions;
         middlewares?: Redux.Middleware[];
+        platformDeps?: Store.Deps,
         render?: Function;
         initialState?: any;
         container?: string;
@@ -51,7 +53,7 @@ namespace interfaces {
         onUpdate?: () => any;
     }
 
-    export interface WrapperHook  extends Function{
+    export interface WrapperHook extends Function {
         (): JSX.Element;
     }
 

@@ -58,6 +58,7 @@ function bootstrap(options: interfaces.BoostrapOptions): interfaces.BootstrapRes
     const storeOptions: StoreOptions = {
         platformMiddleware: [...middlewares],
         platformReducers: reducers,
+        platformDeps: options.platformDeps,
         initialState,
         moduleExist: options.moduleExist,
         // platformStoreEnhancers: [composeEnhancers]
