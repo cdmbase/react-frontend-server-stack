@@ -1,11 +1,14 @@
 const { CheckerPlugin } = require("awesome-typescript-loader")
 var Visualizer = require("webpack-visualizer-plugin");
 const webpack = require("webpack");
+const config = require("config");
 
 var corePlugins = [
     new CheckerPlugin(),
     new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
+         "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development'),
+         SETTINGS: JSON.stringify(config),
+
     }),
     new Visualizer({
         filename: './dist/statistics.html'

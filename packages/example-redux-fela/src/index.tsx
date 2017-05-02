@@ -9,7 +9,9 @@ import routes from "./config/routes";
 import reposReducer from "./reducers/repos_reducer";
 import usersReducer from "./reducers/users_reducer";
 import { loadState, saveState } from "./config/localstorage";
-import "../style/site.scss";
+import createInitialState from './config/createInitialState';
+
+import uuid from 'uuid';
 
 declare var __PRELOADED_STATE__: any;
 
@@ -34,6 +36,7 @@ let result = bootstrap({
     container: "root",
     initialState: preloadedState,
     middlewares: middleware,
+    platformDeps: { uuid: uuid },
     reducers: {
         repos: reposReducer,
         users: usersReducer
