@@ -1,6 +1,7 @@
 {
-  "name": "redux-bootstrap-example",
+  "name": "with-bootstrap-example",
   "version": "0.0.1",
+  "private": true,
   "description": "redux-bootstrap example",
   "main": "src/index.tsx",
   "scripts": {
