@@ -56,7 +56,7 @@ This idea is based on the `bootstrap` functions built into other modern JS frame
 
 ## How can I use it?
 
-First you should install [learna](https://www.npmjs.com/package/lerna).
+First you should install [lerna](https://www.npmjs.com/package/lerna).
 ```
 $ npm install --global lerna 
 ```
@@ -75,7 +75,7 @@ Create your new project in 'packages' directory. In 'package.json' file you need
 Then you should go to main directory and bind your new project with '@redux-bootstrap/bootstrap'. 
 
 ```
-$ learna bootstrap --sort
+$ lerna bootstrap --sort
 ```
 Install dependencies
 ```
