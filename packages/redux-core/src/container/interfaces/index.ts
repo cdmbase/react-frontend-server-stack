@@ -1,1 +1,1 @@
-export * from './InversifyContainerFacade';
+export * from './inversifyContainerFacade';

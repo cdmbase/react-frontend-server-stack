@@ -5,4 +5,4 @@ export { Store } from './types';
 export { default as isClient } from './app/isClient';
 export { default as isReactNative } from './app/isReactNative';
 export { appError, setTheme, appOnline, appShowMenu, toggleBaseline } from './app/actions';
-export { setCurrentLocale } from './intl/actions';
+// export { setCurrentLocale } from './intl/actions';

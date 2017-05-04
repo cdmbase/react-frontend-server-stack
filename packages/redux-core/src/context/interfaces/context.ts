@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { IRetaxConfig } from '../../config';
+import * as H from 'history';
 
 export interface IAssets {
     javascript: Object;
@@ -11,6 +13,7 @@ export interface IRequestContext {
 }
 
 export interface IContext {
+    history: H.History;
     retaxConfig: IRetaxConfig;
     request?: IRequestContext;
 }

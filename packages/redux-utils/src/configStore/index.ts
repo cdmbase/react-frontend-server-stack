@@ -1,3 +1,3 @@
-export { default as ConfigStore } from './ConfigStore';
+export { default as ConfigStore } from './configStore';
 
 export * from './interfaces';

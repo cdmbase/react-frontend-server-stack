@@ -1,10 +1,10 @@
 import { injectable } from 'inversify';
-import merge from 'lodash/merge'
+import { merge } from 'lodash';
 
 import { IConfigStore } from './interfaces';
 
 @injectable()
-export default class ConfigStore<T> implements IConfigStore {
+export default class ConfigStore<T> implements IConfigStore<T> {
     private _config: T;
 
     /**

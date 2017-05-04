@@ -121,6 +121,7 @@
     "fela-plugin-validator": "^4.3.2",
     "fela-preset-web": "^4.3.2",
     "history": "^3.2.1",
+    "inversify": "^4.1.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.0",
     "prop-types": "^15.4.2",
@@ -136,6 +137,7 @@
     "redux-logger": "^3.0.0",
     "redux-observable": "^0.14.1",
     "redux-thunk": "^2.2.0",
+    "reflect-metadata": "^0.1.10",
     "reselect": "^2.5.1",
     "rxjs": "^5.2.0"
   }

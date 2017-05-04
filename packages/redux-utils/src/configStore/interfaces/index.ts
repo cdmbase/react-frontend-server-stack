@@ -1,1 +1,1 @@
-export * from './ConfigStore';
+export * from './configStore';

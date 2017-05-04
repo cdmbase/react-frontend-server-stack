@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { Store } from './types';
 import * as Redux from 'redux';
-import config from './config/reducer';
-import device from './device/reducer';
-import intl from './intl/reducer';
+// import config from './config/reducer';
+// import device from './device/reducer';
+// import intl from './intl/reducer';
 import app from './app/reducer';
 import auth from './auth/reducer';
 import { IStore } from './configureStore';
@@ -17,9 +17,9 @@ const resetStateOnSignOutReducer = (reducer: Redux.Reducer<any>, initialState: S
         // Note how we can purge sensitive data without hard reload easily.
         const stateWithoutSensitiveData = {
             app: state.app,
-            config: initialState.config,
-            device: initialState.device,
-            intl: initialState.intl,
+            // config: initialState.config,
+            // device: initialState.device,
+            // intl: initialState.intl,
         };
         return reducer(stateWithoutSensitiveData, action);
     };
@@ -29,9 +29,9 @@ function configureReducer(
     initialState: Store.State): Redux.Reducer<any> {
     let reducers: Redux.ReducersMapObject = {
         app,
-        config,
-        device,
-        intl,
+        // config,
+        // device,
+        // intl,
     };
 
     for (const key in asyncReducers) {
