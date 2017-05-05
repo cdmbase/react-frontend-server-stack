@@ -1,7 +1,7 @@
 import { IHashMap } from '@redux-bootstrap/utils';
 
 import { IUserService } from '../../service';
-import { IRetaxConfigStore } from '../../../config';
+import { IReboxConfigStore } from '../../../config';
 
 /**
  * API Like service
@@ -32,5 +32,5 @@ export interface IApiService extends IUserService {
 }
 
 export interface IApiServiceConstructor {
-    new(_configProxy: IRetaxConfigStore): IApiService;
+    new(_configProxy: IReboxConfigStore): IApiService;
 }

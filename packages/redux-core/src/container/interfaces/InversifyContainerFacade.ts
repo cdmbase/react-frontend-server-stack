@@ -1,7 +1,7 @@
 import { interfaces } from 'inversify';
 
 export interface IUserModule {
-    serviceIdentifier: Symbol;
+    serviceId: Symbol;
     containerModule: interfaces.ContainerModule;
 }
 
@@ -23,7 +23,7 @@ export interface IInversifyContainerFacade {
      */
     getNamed <T> (serviceIdentifier: interfaces.ServiceIdentifier<T>, named: string | number | symbol): T;
 
-    loadContainerModule(modules: interfaces.ContainerModule[]): void;
+    loadContainerModules(modules: interfaces.ContainerModule[]): void;
     loadModules(modules: IUserModule[]): void;
     unloadModules(modules: IUserModule[]): void;
 }

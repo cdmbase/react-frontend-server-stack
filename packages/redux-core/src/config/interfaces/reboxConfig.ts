@@ -12,15 +12,16 @@ export interface IReducersMap {
 }
 
 export interface IReduxStoreConfig {
+    nonImmutableKeys?: string[];
     middlewares?: Middleware[];
     reducers?: ReducersMapObject;
     initialState?: Object;
-    StoreEnhancers?: StoreEnhancer<any>[];
+    storeEnhancers?: StoreEnhancer<any>[];
 }
 export type IRoute = ReactRouter.Route;
 
 export interface IReactRouterConfig {
-    static?: IRoute;
+    static?: Object;
     dynamic?: (store: Store<any>, userAgent: string) => IRoute;
 }
 
@@ -33,7 +34,7 @@ export interface IApiConfig {
     authHeaderName?: string;
 }
 
-export interface IRetaxConfig {
+export interface IReboxConfig {
     api?: IApiConfig;
     client?: IClientConfig;
     lifecycle?: ILifecycleServiceConstructor;
@@ -42,9 +43,9 @@ export interface IRetaxConfig {
     store?: IReduxStoreConfig;
 }
 
-export interface IRetaxConfigStore extends IConfigStore<IRetaxConfig> {
+export interface IReboxConfigStore extends IConfigStore<IReboxConfig> {
     /**
      * Runtime evaluated config
      */
-    evaluateConfig(store: Store<any>): IRetaxConfig;
+    evaluateConfig(store: Store<any>): IReboxConfig;
 }

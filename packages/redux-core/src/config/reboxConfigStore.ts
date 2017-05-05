@@ -1,9 +1,9 @@
 import { Store } from 'redux';
 import { ConfigStore } from '@redux-bootstrap/utils';
 
-import { IRetaxConfig, IRetaxConfigStore } from './interfaces';
+import { IReboxConfig, IReboxConfigStore } from './interfaces';
 
-export const initialConfig: IRetaxConfig = {
+export const initialConfig: IReboxConfig = {
     api: {
         authHeaderName: 'auth_token',
         baseUrl: '',
@@ -19,19 +19,20 @@ export const initialConfig: IRetaxConfig = {
     store: {
         initialState: {},
         middlewares: [],
+        nonImmutableKeys: ['routing'],
         reducers: undefined,
-        StoreEnhancers: [],
+        storeEnhancers: [],
     },
 };
 
-abstract class RetaxConfigStore extends ConfigStore<IRetaxConfig> implements IRetaxConfigStore {
-    constructor(userConfig: IRetaxConfig) {
+abstract class ReboxConfigStore extends ConfigStore<IReboxConfig> implements IReboxConfigStore {
+    constructor(userConfig: IReboxConfig) {
         super();
         this.config = initialConfig;
         this.mergeConfig(userConfig);
     }
 
-    public abstract evaluateConfig(store: Store<any>): IRetaxConfig;
+    public abstract evaluateConfig(store: Store<any>): IReboxConfig;
 }
 
-export default RetaxConfigStore;
+export default ReboxConfigStore;

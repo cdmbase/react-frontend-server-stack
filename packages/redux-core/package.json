@@ -32,6 +32,8 @@
     ]
   },
   "devDependencies": {
+    "@types/history": "^3.2.0",
+    "@types/jest": "^19.2.2",
     "@types/minimist": "^1.2.0",
     "@types/node": "^7.0.12",
     "@types/redux-logger": "^3.0.0",
@@ -39,6 +41,8 @@
     "@types/semver": "^5.3.30",
     "@types/sinon": "^1.16.36",
     "cdm-webpack-node-externals": "^1.5.6",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
     "rimraf": "^2.6.1",
     "ts-loader": "^2.0.3",
     "webpack": "^2.3.3",
@@ -51,7 +55,12 @@
     "redux-logger": "^3.0.0",
     "redux-observable": "^0.14.1",
     "redux-persist": "^4.5.0",
+    "inversify": "^4.1.0",
+    "reflect-metadata": "^0.1.10",
     "rxjs": "^5.2.0"
+  },
+  "dependencies": {
+    "@redux-bootstrap/utils": "*"
   },
   "typings": "lib/index.d.ts",
   "typescript": {

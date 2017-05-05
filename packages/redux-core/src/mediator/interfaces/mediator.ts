@@ -1,5 +1,5 @@
 import { IInversifyContainerFacade } from '../../container';
 
-export interface IRetaxMediator {
+export interface IReboxMediator {
     run(container: IInversifyContainerFacade): Promise<JSX.Element>;
 }

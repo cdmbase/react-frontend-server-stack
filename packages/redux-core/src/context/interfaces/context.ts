@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IRetaxConfig } from '../../config';
+import { IReboxConfig } from '../../config';
 import * as H from 'history';
 
 export interface IAssets {
@@ -14,6 +14,6 @@ export interface IRequestContext {
 
 export interface IContext {
     history: H.History;
-    retaxConfig: IRetaxConfig;
+    reboxConfig: IReboxConfig;
     request?: IRequestContext;
 }

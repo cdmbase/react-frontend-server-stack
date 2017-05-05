@@ -1,12 +1,12 @@
 import { IInjectableUserServiceMap } from '../../service';
 import { IInversifyContainerFacade } from '../../../container';
 
-export interface IRetaxChildContext {
+export interface IReboxChildContext {
     container: IInversifyContainerFacade;
 }
 
-export interface IRetaxProps extends IRetaxChildContext {}
+export interface IReboxProps extends IReboxChildContext {}
 
-export interface IRetaxComponentRuntimeConfig {
+export interface IReboxComponentRuntimeConfig {
     actionsCreators?: IInjectableUserServiceMap;
 }

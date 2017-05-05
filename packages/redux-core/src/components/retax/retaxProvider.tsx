@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { IRetaxProps, IRetaxChildContext } from './interfaces';
+import { IReboxProps, IReboxChildContext } from './interfaces';
 import { InversifyContainerFacade } from '../../container';
 
-export default class RetaxProvider extends React.Component<IRetaxProps, void> {
+export default class ReboxProvider extends React.Component<IReboxProps, void> {
     public static propTypes: React.ValidationMap<any> = {
         container: React.PropTypes.instanceOf(InversifyContainerFacade).isRequired,
     };
 
-    public getChildContext(): IRetaxChildContext {
+    public getChildContext(): IReboxChildContext {
         return {
             container: this.props.container,
         };

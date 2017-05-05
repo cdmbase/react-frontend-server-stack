@@ -1,4 +1,4 @@
-export { default as RetaxProvider } from './retaxProvider';
-export { default as RetaxConsumer } from './retaxConsumer';
+export { default as ReboxProvider } from './reboxProvider';
+export { default as ReboxConsumer } from './reboxConsumer';
 
 export * from './interfaces';

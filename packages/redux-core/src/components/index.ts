@@ -1,9 +1,9 @@
-export * from './retax';
+export * from './rebox';
 export * from './actionsCreator';
 export * from './api';
 export * from './service';
 
-  pit('mediates the flow of retax', async () => {
+  pit('mediates the flow of rebox', async () => {
     const mediator = new Mediator(
       <any>context,
       <any>cookieProxy,
