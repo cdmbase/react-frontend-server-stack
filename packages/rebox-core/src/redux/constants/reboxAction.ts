@@ -1,0 +1,4 @@
+const REBOX_PREFIX = '@@rebox/';
+
+export const SET_AUTH_TOKEN = `${REBOX_PREFIX}SET_AUTH_TOKEN`;
+export const REMOVE_AUTH_TOKEN = `${REBOX_PREFIX}REMOVE_AUTH_TOKEN`;
